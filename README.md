@@ -1,6 +1,7 @@
 # CSUS
 California State University, Sacramento - Computer Science
 
+
 CSC 35 - Fall 2022 - Devin Cook
   - Assembly Language - x86 - Intel Syntax
   - Easy subject.
@@ -13,6 +14,7 @@ CSC 35 - Fall 2022 - Devin Cook
   - I don't expect to need this subject in the future outside of school.
   - I'd take him again. 
 
+
 CSC 130 - Fall 2022 - Matthew W. Phillips
   - Objected oriented programming using Java - Basic 2D game dev.
   - Easy subject if you have Java experience.
@@ -23,6 +25,7 @@ CSC 130 - Fall 2022 - Matthew W. Phillips
   - 1 final project.
   - Really nice and good professor who's best interest is his students success.
   - Would definitely take him again. 
+
 
 CSC 131 - Fall 2022 - Ahmed Salem
   - Sofware Engineering in a team Environment.
