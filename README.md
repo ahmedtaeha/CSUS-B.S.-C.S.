@@ -12,7 +12,8 @@ CSC 35 - Fall 2022 - Devin Cook
   - 1 final project with 45 points of EC.
   - Confusing & odd wording for his exams.
   - I don't expect to need this subject in the future outside of school.
-  - I'd take him again. 
+  - Just took the final, very challenging with A LOT of vocab (45 points worth), & 2 easy coding problems. If you focus on his study guide really well you should be fine. Easy class if you dont pass, it's because you didn't want to pass. The A is very achievable but the only thing that will hinder that are the midterms/final exam because those are the only semi challenging part of this course.
+  - I'd take him again unless there was a professor who doesn't teach well but gives you the A with no effort. 
 
 
 CSC 130 - Fall 2022 - Matthew W. Phillips
