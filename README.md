@@ -38,3 +38,21 @@ CSC 131 - Fall 2022 - Ahmed Salem
   - Easy course & medium difficulty professor.
   - I'd recommend to quickly gather good group members as soon as the professor mentions it because a good group will either make or break your semester/grade.
   - Would take him again. 
+  
+  
+CSC 60 - Spring 2023 - Ruthann Biel
+  - 
+  
+CSC 134 - Spring 2023 - Ying Jin
+  - 
+  
+CSC 135 - Spring 2023 - Parham Phoulady
+  - 
+  
+Physics 11A LEC & DISC - Spring 2023 - Vera Margoniner
+  - 
+  
+Physics 11A LAB - Spring 2023 - Robert Utter
+  - 
+  
+
