@@ -56,4 +56,7 @@ Physics 11A LEC & DISC - Spring 2023 - Vera Margoniner
 Physics 11A LAB - Spring 2023 - Robert Utter
   - 
   
+Math 100 - Applied Linear Algebra - Martin Hauser
+  - 
+  
 
