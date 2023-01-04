@@ -1,0 +1,2 @@
+gold*you found a bag of gold !!
+chest*you found a lot of gold in the treasure !!
