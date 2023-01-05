@@ -1,0 +1,17 @@
+/*======================
+    404 page
+=======================*/
+.page_404 {
+    padding: 40px 0;
+    background: var(--primary-dark);
+    color: white;
+}
+
+.link_404 {
+    color: #fff !important;
+    padding: 10px 20px;
+    background: #56baed;
+    margin: 20px 0;
+    display: inline-block;
+    border-radius: 10px;
+}

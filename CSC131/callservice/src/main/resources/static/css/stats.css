@@ -1,0 +1,53 @@
+:root {
+    --color-default: #e2dede;
+    --color-label: #a7a7a7;
+}
+
+
+.apexcharts-tooltip {
+    background: #fff;
+    color: var(--primary-dark);
+    box-shadow: none;
+    border: 1px solid #e7e7e7;
+    padding: 8px;
+}
+
+.card {
+    background: var(--primary-dark);
+    width: 300px;
+    padding: 40px;
+    border-radius: 10px;
+    /* box-shadow: 0 30px 25px rgba(0, 0, 0, 0.08); */
+    background: #292929;
+    box-shadow: 15px 15px 30px #101010, -15px -15px 30px #424242;
+}
+
+
+
+
+/* color picker */
+#color-input {
+    display: none;
+  }
+#color-label {
+    margin-left: 15px;
+    position: absolute;
+    height: 30px;
+    width: 50px;
+  } 
+#color-input:checked ~ #color-picker {
+    opacity: 1;
+  }
+#color-picker {
+    position: absolute;
+    left: 70px; 
+    background-color: white;
+    height: 150px;
+    width: 185px;
+    border: solid 1px #ccc;
+    opacity: 0;
+    padding: 5px;
+  }
+canvas:hover {
+    cursor: crosshair;
+  }

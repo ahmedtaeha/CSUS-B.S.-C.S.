@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link
+            href="/webjars/bootstrap/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/index.css"> 
+    <link rel="stylesheet" href="/css/stats.css"> 
+
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts" defer></script>
+    <script src="/js/settings.js" defer></script>
+    <script src="/js/stats.js" defer></script>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings Page</title>
+</head>
+<body>
+
+    <!--/* NAVBAR */-->
+    <nav class="navbar flex justify-content-center align-items-start">
+            <div class="logo col-6 text-end">
+                <svg width="144" height="70" viewBox="0 0 144 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_113_1050)">
+                    <path d="M7.47598 38.1543H24.9959C25.3253 35.9334 25.9543 33.7596 26.8679 31.6837H0V69.0739H7.47598V53.7733H23.7039V47.3027H7.47598V38.1543Z" fill="#A3E0FF"/>
+                    <path d="M35.7519 38.1543C36.3193 35.7323 37.4467 33.453 39.0567 31.4731C40.6666 29.4933 42.7207 27.8601 45.0776 26.6858C47.4345 25.5115 50.0383 24.8241 52.7096 24.6709C55.3809 24.5177 58.0564 24.9023 60.5518 25.7983C61.2544 20.522 64.0176 15.6661 68.3203 12.1463C72.623 8.62652 78.1679 6.68617 83.9092 6.69119C89.6505 6.6962 95.1915 8.64622 99.487 12.1735C103.783 15.7008 106.536 20.5615 107.228 25.839C110.457 24.568 113.976 24.0578 117.471 24.3539C120.966 24.65 124.326 25.7431 127.253 27.5357C130.18 29.3282 132.582 31.7643 134.243 34.6262C135.905 37.4881 136.775 40.6867 136.776 43.936C136.776 49.7287 134.572 54.0363 131.176 58.0698H139.396C142.426 53.8927 144.031 48.9682 144 43.936C144.01 40.2233 143.171 36.5507 141.539 33.1598C139.906 29.7688 137.517 26.7364 134.527 24.262C131.538 21.7877 128.017 19.9274 124.195 18.8037C120.374 17.68 116.339 17.3183 112.356 17.7424C110.043 12.478 106.082 7.97489 100.982 4.8129C95.8822 1.65092 89.8768 -0.025211 83.7392 0.000286637C77.6016 0.0257842 71.6127 1.75175 66.5436 4.95597C61.4745 8.1602 57.5571 12.696 55.2958 17.9795C54.8278 17.9572 54.3638 17.9424 53.8918 17.9424C47.7404 17.9516 41.7942 19.9918 37.1216 23.6966C32.4491 27.4013 29.3566 32.5276 28.3999 38.1543H35.7519Z" fill="url(#paint0_linear_113_1050)"/>
+                    <path d="M35.5999 41.0321H28.3399V69.085H35.5999V41.0321Z" fill="#A3E0FF"/>
+                    <path d="M38.7119 41.0321H46.5719L53.8878 59.6365H54.0478L60.9278 41.0321H68.8958L56.6158 69.0739H50.9358L38.7119 41.0321Z" fill="#A3E0FF"/>
+                    <path d="M106.508 69.0739L115.46 56.4364C114.815 56.5665 114.155 56.6175 113.496 56.5883C107.764 56.5364 101.54 51.8881 101.54 44.4063C101.54 36.469 108.144 30.9614 115.516 30.9614C122.776 30.9614 129.544 36.1653 129.544 44.3545C129.526 45.9431 129.212 47.5168 128.616 49.0065C127.999 50.4797 127.212 51.8867 126.268 53.2029L115.024 69.0739H106.508ZM115.572 37.3283C111.148 37.3283 108.8 40.8655 108.8 43.7989C108.8 47.5916 111.6 50.3695 115.572 50.3695C119.936 50.3695 122.284 46.8324 122.284 44.0545C122.284 40.3766 119.392 37.3431 115.572 37.3431V37.3283Z" fill="#A3E0FF"/>
+                    <path d="M90.5717 60.9514C89.1557 62.8033 86.9397 63.8329 84.0678 63.8329C78.8678 63.8329 76.0438 59.8884 75.7158 58.0698H99.2437C99.5236 56.9585 99.6698 55.8219 99.6797 54.6808C99.6797 47.6064 93.6197 39.921 84.0117 39.921C74.6798 39.921 68.0758 47.199 68.0758 55.1363C68.0588 57.0886 68.4607 59.0245 69.2581 60.8317C70.0555 62.639 71.2326 64.2817 72.721 65.6644C74.2095 67.0471 75.9796 68.1423 77.9288 68.8866C79.878 69.6308 81.9674 70.0092 84.0757 69.9998C90.8317 69.9998 96.3997 65.7404 98.3997 60.9514H90.5717ZM84.0678 46.0879C87.6677 46.0879 91.4357 48.162 92.2557 52.6622H75.4958C76.8638 47.4509 81.3918 46.0879 84.0678 46.0879Z" fill="#A3E0FF"/>
+                    <path d="M125.536 66.7738C125.518 66.3434 125.596 65.9142 125.765 65.5128C125.933 65.1115 126.189 64.7465 126.517 64.4406C126.844 64.1346 127.236 63.8942 127.668 63.7343C128.1 63.5743 128.563 63.4982 129.028 63.5107C131.228 63.5107 132.628 64.9293 132.628 66.7294C132.604 67.5807 132.223 68.39 131.566 68.9864C130.91 69.5827 130.029 69.9194 129.109 69.9251C128.189 69.9309 127.303 69.6054 126.638 69.0173C125.972 68.4293 125.58 67.6248 125.544 66.7738H125.536ZM132.004 66.7294C132.004 65.2034 130.888 64.0441 129.032 64.0515C128.256 64.0588 127.516 64.3512 126.973 64.8641C126.43 65.3771 126.13 66.0687 126.138 66.7868C126.146 67.5048 126.461 68.1906 127.015 68.6931C127.569 69.1957 128.316 69.4739 129.092 69.4665C130.932 69.4443 132 68.2776 132 66.7294H132.004ZM127.864 65.0441H129.26C129.422 65.032 129.585 65.0505 129.739 65.0986C129.893 65.1467 130.035 65.2232 130.156 65.3237C130.278 65.4242 130.376 65.5464 130.444 65.683C130.513 65.8196 130.551 65.9676 130.556 66.1182C130.568 66.3249 130.513 66.5303 130.398 66.7075C130.282 66.8846 130.111 67.0252 129.908 67.1108L130.708 68.4776H130L129.34 67.222H128.512V68.4627H127.876L127.864 65.0441ZM129.216 66.7256C129.384 66.7256 129.546 66.6636 129.665 66.5532C129.785 66.4427 129.852 66.2929 129.852 66.1367C129.852 65.9806 129.785 65.8308 129.665 65.7203C129.546 65.6099 129.384 65.5478 129.216 65.5478H128.512V66.7256H129.216Z" fill="#A3E0FF"/>
+                    </g>
+                    <defs>
+                    <linearGradient id="paint0_linear_113_1050" x1="86.2" y1="0" x2="86.2" y2="58.0698" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#A3E0FF"/>
+                    <stop offset="1" stop-color="#292929"/>
+                    </linearGradient>
+                    <clipPath id="clip0_113_1050">
+                    <rect width="144" height="70" fill="white"/>
+                    </clipPath>
+                    </defs>
+                    </svg>                        
+            </div>
+
+            <div class="page-links col-6 text-end px-3 flex-row">
+                <a href="/home" class="px-1">Home</a>
+                <a href="/" class="px-1">Log out</a>
+            </div>
+                
+    </nav>
+    <!--/* NAVBAR */-->
+
+
+    <!-- ENTITY INFORMATION ROW -->
+    <section id="entityInfo" class="d-flex justify-content-around m-4 px-4">
+        <!-- <div class="flex" style="border: 1px solid red">H</div> -->
+        <div class="entityInfo-item allEntities">
+            <p >
+                <b>Entities:</b>
+                <!-- 5678 -->
+                <span th:text="${agents.size()}" class="entityStats"></span>
+            </p>
+        </div>
+        <div class="entityInfo-item available">
+            <p>
+                <b>Available:</b>
+                <span th:text="${available}" class="availableStats"></span>
+            </p>
+        </div>
+        <div class="entityInfo-item busy">
+            <p>
+                <b>Busy:</b>
+                <span th:text="${busy}" class="busyStats"></span>
+            </p>
+        </div>
+        <div class="entityInfo-item preview">
+            <p>
+                <b>Preview:</b>
+                <span th:text="${preview}" class="previewStats"></span>
+            </p>
+        </div>
+        <div class="entityInfo-item loggedout">
+            <p>
+                <b>Logged Out:</b>
+                <span th:text="${loggedout}" class="loggedOutStats"></span>
+            </p>
+        </div>
+        <div class="entityInfo-item after">
+            <p>
+                <b>After Work:</b>
+                <span th:text="${after}" class="afterStats"></span>
+            </p>
+        </div>
+    </section>
+    <!-- ENTITY INFORMATION ROW -->
+
+    <!-- STATISTICS COLUMNS -->
+    <!-- AGENT DOT CONTAINERS -->
+    <section class="p-2 my-container" >
+        <div class="container-fluid d-flex flex-row">
+            <div class="w-100 p-4">
+                <div class="card w-100">
+                    <div id="bar-chart">
+                    </div>
+                </div>
+            </div>
+            <div class="w-100 p-4">
+                <div class="card w-100">
+                    <div id="circle-chart" class="circle-ch"></div>
+                </div>
+            </div>
+            <div class="w-100 text-white">
+                <div class="card w-100">
+                    <div id="donut-chart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-row container-fluid">
+            <div class="w-100 ">
+                <div class="card w-100 text-white">
+                    <h1>Status Colors</h1>
+                    <div id="option-choices" class="d-flex flex-row">
+                        <div id="available-option" class="px-2">
+                            
+                            <label for="available-color">Available Color</label>
+                            <input type="color" name="available-color" id="available-color-option">
+                        </div>
+                        <div id="busy-option" class="px-2">
+                            <label for="busy-color">Busy Color</label>
+                            <input type="color" name="busy-color" id="busy-color-option">
+                        </div>
+                        <div id="preview-option" class="px-2">
+                            <label for="preview-color">Preview Color</label>
+                            <input type="color" name="preview-color" id="preview-color-option">
+                        </div>
+                        <div id="loggedout-option" class="px-2">
+                            <label for="loggedout-color">Logged Out Color</label>
+                            <input type="color" name="loggedout-color" id="loggedout-color-option">
+                        </div>
+                        <div id="after-option" class="px-2">
+                            <label for="after-color">After Color</label>
+                            <input type="color" name="after-color" id="after-color-option">
+                        </div>
+
+                        <!-- <div id="color-picker">
+                            <canvas id="color-block" height="150" width="150"></canvas>
+                            <canvas id="color-strip" height="150" width="30"></canvas>
+                          </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- STATISTICS COLUMNS -->
+
+    
+    
+</body>
+</html>

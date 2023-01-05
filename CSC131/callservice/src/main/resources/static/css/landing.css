@@ -1,0 +1,292 @@
+/* BASIC */
+body {
+    font-family: "Poppins", sans-serif;
+    height: 100vh;
+}
+
+a {
+    color: #92badd;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+/* STRUCTURE */
+.wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+    padding: 1.25rem;
+}
+
+#formContent {
+    -webkit-border-radius: 0.625rem;
+    border-radius: 0.625rem;
+    background: #292929;
+    box-shadow: 15px 15px 30px #101010, -15px -15px 30px #424242;
+    /* background: #fff; */
+    /* padding: 1.875rem; */
+    width: 90%;
+    max-width: 28.125rem;
+    position: relative;
+    padding: 0px;
+    text-align: center;
+}
+
+#formFooter {
+    background-color: #1b1b1b;
+    border-top: 0.063rem solid #1b1b1b;
+    padding: 1.563rem;
+    text-align: center;
+    -webkit-border-radius: 0 0 0.625rem 0.625rem;
+    border-radius: 0 0 0.625rem 0.625rem;
+}
+
+input {
+    background: #424242;
+    -webkit-appearance: none;
+    box-shadow: inset 2px 3px 10px #101010, inset -2px -3px 10px #424242;
+    border-radius: 56px;
+    border: none;
+    width: 100%;
+    padding: 8px 20px;
+    margin-top: 20px;
+    transition: .4s ease all;
+    outline: none!important;
+  }
+
+  input:focus {
+    box-shadow:  inset 1px 1px 2px #101010, inset -1px -1px 2px #424242;
+  }
+
+  .button {
+    background-color: #0075ac;
+    font-size: 16px;
+    border-radius: 320px;
+    padding: 5px 20px;
+    margin: 20px 0px;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: -5px -5px 20px #424242, 5px 5px 20px #101010;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  button:hover {
+    color:white;
+    box-shadow: -2px -2px 5px #424242, 2px 2px 5px #101010;
+  }
+
+  .validation-message {
+    color:red;
+  }
+
+  .registerBtn {
+    background-color: #ffc107;
+    font-size: 16px;
+    border-radius: 320px;
+    padding: 5px 20px;
+    margin: 20px 0px;
+    color: #1b1b1b;
+    font-weight: bold;
+    box-shadow: -5px -5px 20px #424242, 5px 5px 20px #101010;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+/* FORM TYPOGRAPHY
+input[type="password"] {
+    padding: 0.938rem 2rem;
+    text-align: center;
+    font-size: 1rem;
+    margin: 0.313rem;
+    border: none;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-border-radius: 0.313rem;
+    border-radius: 0.313rem;
+} */
+
+.form-signin {
+    padding:10px;
+}
+
+/* input[type="password"]:placeholder {
+    color: #cccccc;
+} */
+
+#loginbtn {
+    border: none;
+    background-color: #56baed;
+    color: white;
+    padding: 0.625rem 1.875rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.813rem;
+    -webkit-box-shadow: 0 0.625rem 1.875rem 0 rgba(95, 186, 233, 0.4);
+    box-shadow: 0 0.625rem 1.875rem 0 rgba(95, 186, 233, 0.4);
+    -webkit-border-radius: 0.313rem;
+    border-radius: 0.313rem;
+    margin: 0.313rem 1.25rem 2.5rem 1.25rem;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+#loginbtn:hover {
+    background-color: #39ace7;
+}
+
+#loginbtn:active {
+    -moz-transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    transform: scale(0.95);
+}
+
+#abt-link:hover {
+    cursor: pointer;
+}
+
+/* ANIMATIONS */
+
+/* Simple CSS3 Fade-in-down Animation */
+.fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+/* Simple CSS3 Fade-in Animation */
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@-moz-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    opacity: 0;
+    -webkit-animation: fadeIn ease-in 1;
+    -moz-animation: fadeIn ease-in 1;
+    animation: fadeIn ease-in 1;
+
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.fadeIn.first {
+    -webkit-animation-delay: 0.4s;
+    -moz-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+}
+
+.fadeIn.second {
+    -webkit-animation-delay: 0.6s;
+    -moz-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+}
+
+.fadeIn.third {
+    -webkit-animation-delay: 0.8s;
+    -moz-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+}
+
+.fadeIn.fourth {
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    animation-delay: 1s;
+}
+
+/* Simple CSS3 Fade-in Animation */
+.underlineHover:after {
+    display: block;
+    left: 0;
+    bottom: -0.625rem;
+    width: 0;
+    height: 0.125rem;
+    background-color: #56baed;
+    content: "";
+    transition: width 0.3s;
+}
+
+.underlineHover:hover {
+    color: #0d0d0d;
+}
+
+.underlineHover:hover:after {
+    width: 100%;
+}
+
+#response-bar {
+    color: red;
+}
+
+/* OTHERS */
+*:focus {
+    outline: none;
+}
