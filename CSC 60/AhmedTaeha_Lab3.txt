@@ -1,0 +1,323 @@
+Script started on Tue 07 Mar 2023 10:05:15 PM PST
+]0;ahmedtaeha@ecs-pa-coding1:~[?1034h[ahmedtaeha@ecs-pa-coding1 ~]$ ls
+AhmedTaeha_Lab1.txt  csc35.o      lab1.o  [0m[38;5;34mp1[0m
+AhmedTaeha_lab2.txt  [38;5;27mcsc60[0m        [38;5;27mlab2[0m    vim
+AhmedTaeha_lab3.txt  dead.letter  lab2.c  wizardFinal.asm
+[38;5;34ma.out[0m                lab1.asm     [38;5;27mmail[0m    wizardFinal.o
+]0;ahmedtaeha@ecs-pa-coding1:~[ahmedtaeha@ecs-pa-coding1 ~]$ history -c
+]0;ahmedtaeha@ecs-pa-coding1:~[ahmedtaeha@ecs-pa-coding1 ~]$ cd csc60
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60[ahmedtaeha@ecs-pa-coding1 csc60]$ mkdir lab3
+mkdir: cannot create directory ‘lab3’: File exists
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60[ahmedtaeha@ecs-pa-coding1 csc60]$ cd lab3
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ pwd
+/home/student/ahmedtaeha/csc60/lab3
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ mkdir aaa
+mkdir: cannot create directory ‘aaa’: File exists
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ cd md[Kkdir
+bash: cd: mkdir: No such file or directory
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ cd aaa
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ ls
+aaalist  file2
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ pwd
+/home/student/ahmedtaeha/csc60/lab3/aaa
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ cd aaa
+bash: cd: aaa: No such file or directory
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ pwd
+/home/student/ahmedtaeha/csc60/lab3/aaa
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ pwd
+/home/student/ahmedtaeha/csc60/lab3/aaa
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ cd ..
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ pwd
+/home/student/ahmedtaeha/csc60/lab3
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ ls>file1
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ cat file1
+aaa
+file1
+file2
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ les fi[K[K[K[Kss file1
+[?1049h[?1h=aaa
+file1
+file2
+[7mfile1 (END)[27m[K[K[?1l>[?1049l]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ file *
+aaa:   directory
+file1: ASCII text
+file2: ASCII text
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ wc file1
+ 3  3 16 file1
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ wc*[K *
+wc: aaa: Is a directory
+      0       0       0 aaa
+      3       3      16 file1
+      2       2      10 file2
+      5       5      26 total
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ grep file file2
+[01;31m[Kfile[m[K1
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ frep file file1
+bash: frep: command not found
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ cp file file2
+cp: cannot stat ‘file’: No such file or directory
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ ls
+[0m[38;5;27maaa[0m  file1  file2
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ cd aaa
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ pwd
+/home/student/ahmedtaeha/csc60/lab3/aaa
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ cp ../file1
+cp: missing destination file operand after ‘../file1’
+Try 'cp --help' for more information.
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ ls
+aaalist  file2
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ pwd
+/home/student/ahmedtaeha/csc60/lab3/aaa
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ ls
+aaalist  file2
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ cd .. 
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ pwd
+/home/student/ahmedtaeha/csc60/lab3
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ ls
+[0m[38;5;27maaa[0m  file1  file2
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ pwd
+/home/student/ahmedtaeha/csc60/lab3
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ ls
+[0m[38;5;27maaa[0m  file1  file2
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ cd aaa
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ ls
+aaalist  file2
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ cp ../file1
+cp: missing destination file operand after ‘../file1’
+Try 'cp --help' for more information.
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ cd [K[Kp ../file1 aaa
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ ls
+aaa  aaalist  file2
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ pwd
+/home/student/ahmedtaeha/csc60/lab3/aaa
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ ls
+aaa  aaalist  file2
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ cd ..
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ ls
+[0m[38;5;27maaa[0m  file1  file2
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ mv file1 aaa
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ pwd
+/home/student/ahmedtaeha/csc60/lab3
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ ls
+[0m[38;5;27maaa[0m  file2
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ cd aaa
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ ls 
+aaa  aaalist  file1  file2
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ cd[K[Kpwd[K[Kwd
+/home/student/ahmedtaeha/csc60/lab3/aaa
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ cd ..
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ pwd
+/home/student/ahmedtaeha/csc60/lab3
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ ls
+[0m[38;5;27maaa[0m  file2
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ cd aaa
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ pwd
+/home/student/ahmedtaeha/csc60/lab3/aaa
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ cmp file1 file2
+cmp: EOF on file2
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ ls ?[K> aaalist
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ cmp file1 aaalist
+file1 aaalist differ: byte 5, line 2
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ diff file1 aaalist
+1a2
+> aaalist
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ m -i [K[K[K[K[Krm -ifi[K[K[Ki file1
+rm: remove regular file ‘file1’? y
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ ls
+aaa  aaalist  file2
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ ps u
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+ahmedta+   752  0.0  0.0 114300   824 pts/3    S+   22:05   0:00 script AhmedTae
+ahmedta+   754  0.0  0.0 114308   400 pts/3    S+   22:05   0:00 script AhmedTae
+ahmedta+   757  0.0  0.0 126356  2160 pts/7    Ss   22:05   0:00 bash -i
+ahmedta+  1164  0.0  0.0 166156  1956 pts/7    R+   22:18   0:00 ps u
+ahmedta+ 32110  0.0  0.0 126252  2176 pts/6    Ss   21:47   0:00 -bash
+ahmedta+ 32467  0.0  0.0 114300   824 pts/6    S+   21:55   0:00 script AhmedTae
+ahmedta+ 32469  0.0  0.0 114308   400 pts/6    S+   21:55   0:00 script AhmedTae
+ahmedta+ 32470  0.0  0.0 126256  2140 pts/3    Ss   21:55   0:00 bash -i
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ ps -i
+error: unsupported SysV option
+
+Usage:
+ ps [options]
+
+ Try 'ps --help <simple|list|output|threads|misc|all>'
+  or 'ps --help <s|l|o|t|m|a>'
+ for additional help text.
+
+For more details see ps(1).
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ !!
+ps -i
+error: unsupported SysV option
+
+Usage:
+ ps [options]
+
+ Try 'ps --help <simple|list|output|threads|misc|all>'
+  or 'ps --help <s|l|o|t|m|a>'
+ for additional help text.
+
+For more details see ps(1).
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ pwd
+/home/student/ahmedtaeha/csc60/lab3/aaa
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3/aaa[ahmedtaeha@ecs-pa-coding1 aaa]$ cd ..
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ pwd
+/home/student/ahmedtaeha/csc60/lab3
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60/lab3[ahmedtaeha@ecs-pa-coding1 lab3]$ cd ..
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60[ahmedtaeha@ecs-pa-coding1 csc60]$ pwd
+/home/student/ahmedtaeha/csc60
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60[ahmedtaeha@ecs-pa-coding1 csc60]$ ls
+[0m[38;5;27mlab3[0m
+]0;ahmedtaeha@ecs-pa-coding1:~/csc60[ahmedtaeha@ecs-pa-coding1 csc60]$ cd ..
+]0;ahmedtaeha@ecs-pa-coding1:~[ahmedtaeha@ecs-pa-coding1 ~]$ cd lab2
+]0;ahmedtaeha@ecs-pa-coding1:~/lab2[ahmedtaeha@ecs-pa-coding1 lab2]$ head ;[Klab2.c
+head: cannot open ‘lab2.c’ for reading: No such file or directory
+]0;ahmedtaeha@ecs-pa-coding1:~/lab2[ahmedtaeha@ecs-pa-coding1 lab2]$ cd. [K[K ..
+]0;ahmedtaeha@ecs-pa-coding1:~[ahmedtaeha@ecs-pa-coding1 ~]$ pwd
+/home/student/ahmedtaeha
+]0;ahmedtaeha@ecs-pa-coding1:~[ahmedtaeha@ecs-pa-coding1 ~]$ ls
+AhmedTaeha_Lab1.txt  csc35.o      lab1.o  [0m[38;5;34mp1[0m
+AhmedTaeha_lab2.txt  [38;5;27mcsc60[0m        [38;5;27mlab2[0m    vim
+AhmedTaeha_lab3.txt  dead.letter  lab2.c  wizardFinal.asm
+[38;5;34ma.out[0m                lab1.asm     [38;5;27mmail[0m    wizardFinal.o
+]0;ahmedtaeha@ecs-pa-coding1:~[ahmedtaeha@ecs-pa-coding1 ~]$ head lab2.c
+/* Ahmed Taeha */
+/* Lab 2*/ 
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main (void) 
+
+{
+
+]0;ahmedtaeha@ecs-pa-coding1:~[ahmedtaeha@ecs-pa-coding1 ~]$ head -20 lab2.c
+/* Ahmed Taeha */
+/* Lab 2*/ 
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main (void) 
+
+{
+
+printf("\nLab 2. \n\n");
+printf("Hello World!.\n");
+printf("Hi, Ahmed Taeha.\n\n");
+printf("Nothing is impossible - Audrey Hepburn.\n\n");
+
+return EXIT_SUCCESS;
+
+}
+
+]0;ahmedtaeha@ecs-pa-coding1:~[ahmedtaeha@ecs-pa-coding1 ~]$ q
+bash: q: command not found
+]0;ahmedtaeha@ecs-pa-coding1:~[ahmedtaeha@ecs-pa-coding1 ~]$ ls -al | less
+[?1049h[?1h=total 376
+drwx--x--x    6 ahmedtaeha domain users   4096 Mar  7 22:05 .
+drwxr-xr-x 2275 nobody     nobody       176128 Mar  7 17:31 ..
+-rw-r--r--    1 ahmedtaeha domain users      0 Sep 22 14:43 .addressbook
+-rw-r--r--    1 ahmedtaeha domain users    378 Feb 15 21:27 AhmedTaeha_Lab1.txt
+-rw-r--r--    1 ahmedtaeha domain users    526 Feb 26 00:22 AhmedTaeha_lab2.txt
+-rw-r--r--    1 ahmedtaeha domain users   8192 Mar  7 22:19 AhmedTaeha_lab3.txt
+-rwxr-xr-x    1 ahmedtaeha domain users   8360 Feb 26 00:22 a.out
+-rw-------    1 ahmedtaeha domain users   6983 Mar  7 21:44 .bash_history
+-rw-------    1 ahmedtaeha domain users     18 Sep 22 14:17 .bash_logout
+-rw-------    1 ahmedtaeha domain users    193 Sep 22 14:17 .bash_profile
+-rw-------    1 ahmedtaeha domain users    231 Sep 22 14:17 .bashrc
+-rw-r--r--    1 ahmedtaeha domain users   6624 Dec 12 11:02 csc35.o
+drwxr-xr-x    3 ahmedtaeha domain users   4096 Mar  7 17:38 csc60
+-rw-------    1 ahmedtaeha domain users    178 Sep 22 14:17 .cshrc
+-rw-------    1 ahmedtaeha domain users    385 Feb 15 21:29 dead.letter
+-rw-------    1 ahmedtaeha domain users    334 Sep 22 14:17 .emacs
+-rw-r--r--    1 ahmedtaeha domain users    501 Sep 22 14:42 lab1.asm
+-rw-r--r--    1 ahmedtaeha domain users   1360 Sep 22 14:43 lab1.o
+drwxr-xr-x    2 ahmedtaeha domain users   4096 Sep 29 14:30 lab2
+-rw-r--r--    1 ahmedtaeha domain users    257 Feb 26 00:20 lab2.c
+-rw-------    1 ahmedtaeha domain users     86 Sep 22 14:17 .login
+drwx------    2 ahmedtaeha domain users   4096 Mar  7 21:49 mail
+:[K[K[?1l>[?1049l]0;ahmedtaeha@ecs-pa-coding1:~[ahmedtaeha@ecs-pa-coding1 ~]$ istor[K[K[K[K[Khistory
+    1  2023-03-07 22:05:59 cd csc60
+    2  2023-03-07 22:06:09 mkdir lab3
+    3  2023-03-07 22:06:17 cd lab3
+    4  2023-03-07 22:06:36 pwd
+    5  2023-03-07 22:06:43 mkdir aaa
+    6  2023-03-07 22:06:48 cd mkdir
+    7  2023-03-07 22:06:52 cd aaa
+    8  2023-03-07 22:06:54 ls
+    9  2023-03-07 22:07:53 pwd
+   10  2023-03-07 22:08:12 cd aaa
+   11  2023-03-07 22:08:15 pwd
+   12  2023-03-07 22:08:30 cd ..
+   13  2023-03-07 22:08:36 pwd
+   14  2023-03-07 22:08:44 ls>file1
+   15  2023-03-07 22:08:52 cat file1
+   16  2023-03-07 22:09:03 less file1
+   17  2023-03-07 22:09:12 file *
+   18  2023-03-07 22:09:18 wc file1
+   19  2023-03-07 22:10:12 wc *
+   20  2023-03-07 22:10:22 grep file file2
+   21  2023-03-07 22:10:32 frep file file1
+   22  2023-03-07 22:10:43 cp file file2
+   23  2023-03-07 22:10:48 ls
+   24  2023-03-07 22:13:45 cd aaa
+   25  2023-03-07 22:13:50 pwd
+   26  2023-03-07 22:14:01 cp ../file1
+   27  2023-03-07 22:14:03 ls
+   28  2023-03-07 22:14:06 pwd
+   29  2023-03-07 22:14:19 ls
+   30  2023-03-07 22:14:24 cd .. 
+   31  2023-03-07 22:14:26 pwd
+   32  2023-03-07 22:14:27 ls
+   33  2023-03-07 22:15:15 pwd
+   34  2023-03-07 22:15:18 ls
+   35  2023-03-07 22:15:20 cd aaa
+   36  2023-03-07 22:15:21 ls
+   37  2023-03-07 22:15:32 cp ../file1
+   38  2023-03-07 22:15:48 cp ../file1 aaa
+   39  2023-03-07 22:15:49 ls
+   40  2023-03-07 22:15:55 pwd
+   41  2023-03-07 22:15:58 ls
+   42  2023-03-07 22:16:10 cd ..
+   43  2023-03-07 22:16:11 ls
+   44  2023-03-07 22:16:20 mv file1 aaa
+   45  2023-03-07 22:16:23 pwd
+   46  2023-03-07 22:16:24 ls
+   47  2023-03-07 22:16:26 cd aaa
+   48  2023-03-07 22:16:27 ls 
+   49  2023-03-07 22:16:41 pwd
+   50  2023-03-07 22:16:44 cd ..
+   51  2023-03-07 22:16:45 pwd
+   52  2023-03-07 22:16:56 ls
+   53  2023-03-07 22:17:02 cd aaa
+   54  2023-03-07 22:17:04 pwd
+   55  2023-03-07 22:17:12 cmp file1 file2
+   56  2023-03-07 22:17:27 ls > aaalist
+   57  2023-03-07 22:17:36 cmp file1 aaalist
+   58  2023-03-07 22:17:48 diff file1 aaalist
+   59  2023-03-07 22:18:22 rm -i file1
+   60  2023-03-07 22:18:32 ls
+   61  2023-03-07 22:18:42 ps u
+   62  2023-03-07 22:18:47 ps -i
+   63  2023-03-07 22:19:03 pwd
+   64  2023-03-07 22:19:06 cd ..
+   65  2023-03-07 22:19:07 pwd
+   66  2023-03-07 22:19:09 cd ..
+   67  2023-03-07 22:19:10 pwd
+   68  2023-03-07 22:19:19 ls
+   69  2023-03-07 22:19:22 cd ..
+   70  2023-03-07 22:19:31 cd lab2
+   71  2023-03-07 22:19:39 head lab2.c
+   72  2023-03-07 22:19:42 cd ..
+   73  2023-03-07 22:19:43 pwd
+   74  2023-03-07 22:19:46 ls
+   75  2023-03-07 22:19:49 head lab2.c
+   76  2023-03-07 22:19:57 head -20 lab2.c
+   77  2023-03-07 22:20:04 q
+   78  2023-03-07 22:20:18 ls -al | less
+   79  2023-03-07 22:20:28 history
+]0;ahmedtaeha@ecs-pa-coding1:~[ahmedtaeha@ecs-pa-coding1 ~]$ exit
+exit
+
+Script done on Tue 07 Mar 2023 10:20:34 PM PST

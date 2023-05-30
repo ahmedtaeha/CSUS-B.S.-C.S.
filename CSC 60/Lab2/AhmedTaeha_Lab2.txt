@@ -1,0 +1,17 @@
+Script started on Sun 26 Feb 2023 12:22:13 AM PST
+]0;ahmedtaeha@ecs-pa-coding1:~[?1034h[ahmedtaeha@ecs-pa-coding1 ~]$ gcc lab.[K2.c
+]0;ahmedtaeha@ecs-pa-coding1:~[ahmedtaeha@ecs-pa-coding1 ~]$ a.out
+bash: a.out: command not found
+]0;ahmedtaeha@ecs-pa-coding1:~[ahmedtaeha@ecs-pa-coding1 ~]$ ./a.out
+
+Lab 2. 
+
+Hello World!.
+Hi, Ahmed Taeha.
+
+Nothing is impossible - Audrey Hepburn.
+
+]0;ahmedtaeha@ecs-pa-coding1:~[ahmedtaeha@ecs-pa-coding1 ~]$ exit
+exit
+
+Script done on Sun 26 Feb 2023 12:22:51 AM PST
