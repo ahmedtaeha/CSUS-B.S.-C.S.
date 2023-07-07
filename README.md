@@ -68,7 +68,16 @@ Physics 11A LAB - Spring 2023 - Robert Utter
   
 
 CSC 133 - Summer 2023 - KWAN, Kin Chung
-  - 
+  - The dog shittiest professor, stay away from him at all costs.
+  - He enjoys failing students, I took him when it was only his second-semester teaching, and literally everyone hated him.
+  - He speaks very broken English and you won't learn anything from him.
+  - He expects you to know 20 years of programming.
+  - He clearly enjoys failing students and is paranoid about cheating.
+  - After assignments were graded, he would go back and regrade just to lower student's grades.
+  - A few students were getting ready to report him to the CS department and school dean.
+  - We also caught him leaving himself good reviews on ratemyprofessor and some of our bad reviews got taken down right after he asked which one of us left him bad reviews. He was reporting our bad reviews trying to take them down.
+  - He clearly has personal issues and is taking it out on his students.
+  - Pick anyone else, stay away.
 
 
 CSC 134 - Summer 2023 - Ying Jin
