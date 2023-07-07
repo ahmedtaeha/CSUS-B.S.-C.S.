@@ -33,12 +33,12 @@ CSC 131 - Fall 2022 - Ahmed Salem
   - You'll be working on a team project the entire semester.
   - Remote.
   - Attendance not mandatory but must meet with your group remotely to work/discuss project.
-  - Very nice professor who seems to want the best for his students.
+  - He doesn't care for his students.
   - 1 midterm and 1 final. 
   - Exam wording is very very confusing but is open note.
   - Easy course & medium difficulty professor.
   - I'd recommend to quickly gather good group members as soon as the professor mentions it because a good group will either make or break your semester/grade.
-  - Would take him again. 
+  - I would not take him again. 
   
   
 CSC 60 - Spring 2023 - Ruthann Biel
