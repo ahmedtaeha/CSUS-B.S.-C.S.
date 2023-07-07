@@ -42,18 +42,46 @@ CSC 131 - Fall 2022 - Ahmed Salem
   
   
 CSC 60 - Spring 2023 - Ruthann Biel
-  - 
+  - Remote because she was sick.
+  - Sweet old lady.
+  - 1 Midterm & 1 Final.
+  - Easy course, easy material, easy A.
+  - Would take her again.
+  - Attendance was technically mandatory and she stopped checking in like February.
+  - Worked alone entire semester, didn't need a group.
   
-CSC 134 - Spring 2023 - Ying Jin
-  - 
-  
-CSC 135 - Spring 2023 - Parham Phoulady
-  - 
   
 Physics 11A LEC & DISC - Spring 2023 - Vera Margoniner
-  - 
-  
+  - Difficult A, I was the only one to receive an A on the final and I think in the class.
+  - PCA and HW due weekly.
+  - PCA get an additional 30% on top of whatever score you receive (Maximum 100%, no EC), and HWs receive an extra 10%.
+  - Quizzes weekly.
+  - She doesn't take attendance but i'd recommend showing up to all the classes and pay attention.
+  - PCAs and HWs are online on Pearson. Don't cheat through PCA or HW's, actually solve and learn the problems. 
+
+
 Physics 11A LAB - Spring 2023 - Robert Utter
-  -
+  - Miss 3 classes and you fail everything, so attendance is mandatory.
+  - Find a good lab group that can potentially carry you.
+  - Lab quiz at the beginning of every lab, so read the lab manual to get an A.
+  - You need to do 3 lab reports the entire semester, you take turns with your group mates doing a lab report. Make sure you get all the lab numbers/data from your lab group before anyone goes home because they can procrastinate sending you the data and force you to cram the lab report.
   
 
+CSC 133 - Summer 2023 - 
+  - 
+
+
+CSC 134 - Summer 2023 - Ying Jin
+  - 
+  
+  
+CSC 135 - Summer 2023 - Parham Phoulady
+  - 
+
+
+CSC 138 - Summer 2023 - 
+  - 
+
+
+Math 35 (Equivalent at FLC using Assist.org) - Summer 2023 -
+  - 
