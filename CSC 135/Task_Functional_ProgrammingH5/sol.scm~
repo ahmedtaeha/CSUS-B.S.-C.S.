@@ -1,0 +1,51 @@
+;; inc function
+(define (inc n)
+  (lambda (x) (+ x n)))
+
+;; len function
+(define (len lst)
+  (define (helper lst count)
+    (if (null? lst)
+        count
+        (helper (cdr lst) (+ count 1))))
+  (helper lst 0))
+
+;; maxmin function
+(define (maxmin lst)
+  (define (helper lst max min)
+    (if (null? lst)
+        (list max min)
+        (let ((first (car lst)))
+          (helper (cdr lst) (if (> first max) first max) (if (< first min) first min)))))
+  (helper (cdr lst) (car lst) (car lst)))
+
+;; mem function
+(define (mem x lst)
+  (cond
+   ((null? lst) #f)
+   ((equal? x (car lst)) #t)
+   (else (mem x (cdr lst)))))
+
+;; ins function
+(define (ins x lst)
+  (if (mem x lst)
+      lst
+      (cons x lst)))
+
+;; numT function
+(define (numT pred lst)
+  (define (helper pred lst count)
+    (if (null? lst)
+        count
+        (helper pred (cdr lst) (if (pred (car lst)) (+ count 1) count))))
+  (helper pred lst 0))
+
+;; moreT function
+(define (moreT pred lst1 lst2)
+  (let ((count1 (numT pred lst1)) (count2 (numT pred lst2)))
+    (cond
+     ((> count1 count2) 1)
+     ((< count1 count2) 2)
+     (else 0))))
+
+;; add here the calls to your functions
