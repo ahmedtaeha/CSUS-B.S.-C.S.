@@ -1,0 +1,24 @@
+select loan_no, payment_no, amount, method from Payment where status='On time' AND amount>15 order by loan_no;
+
+select distinct Customer.ssn, fname, lname from Customer JOIN Owns On Customer.ssn=Owns.ssn JOIN Account on Account.acc_no=Owns.acc_no and Account.balance > 10000;
+
+select Customer.ssn, fname, lname from Customer INNER JOIN Owns On Customer.ssn=Owns.ssn group by Owns.ssn having count(*) > 2; 
+
+select Customer.ssn, fname, lname, phone from Customer INNER JOIN Owns On Customer.ssn=Owns.ssn AND Owns.acc_no='000000001'; 
+
+select payment_no, due_date from Payment INNER JOIN Borrows On Payment.loan_no=Borrows.loan_no AND method='Cheque' INNER JOIN Customer On Customer.ssn=Borrows.ssn AND Customer.fname='John' AND Customer.lname='Smith'; 
+
+SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
+select distinct Customer.ssn, fname, lname from Customer INNER JOIN Borrows On Customer.ssn=Borrows.ssn group by loan_no having count(*) > 0;
+
+select Customer.ssn, count(*) AS 'Num_Loans' from Customer INNER JOIN Borrows On Customer.ssn=Borrows.ssn WHERE fname='John' AND lname='Smith';
+
+select Customer.ssn, count(*) AS 'Num_Acc', sum(balance) as 'Total_Balance' from Customer INNER JOIN Owns On Customer.ssn=Owns.ssn INNER JOIN Account On Owns.acc_no=Account.acc_no group by Owns.ssn having count(*) > 2;
+
+select Customer.ssn, lname, name, Branch.address from Customer LEFT JOIN Branch ON name=fv_branch;
+
+select Customer.ssn, lname, name from Customer INNER JOIN Branch ON name=fv_branch;
+
+select max(fee) as 'Highest_Fee' from Account;
+
+select loan_no, ltype, interest_rate from loan group by interest_rate order by interest_rate desc limit 1;

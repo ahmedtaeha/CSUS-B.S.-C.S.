@@ -1,0 +1,10 @@
+INSERT INTO Branch(name, address) VALUES ('Branch A','Street 123, XYZ');
+INSERT INTO Customer(ssn, fname, lname, phone, address, fv_branch) VALUES ('123456789','Ahmed','Taeha','12345678','St. 1, City X, YZ','Branch A');
+INSERT INTO Account(acc_no, balance, atype, fee) VALUES ('112233',1000,'Savings',10.75);
+INSERT INTO Owns(ssn, acc_no, own_date) VALUES ('123456789','112233','2023-06-22');
+INSERT INTO Loan(loan_no, amount, ltype, interest_rate) VALUES ('12345',550,'Student',0.095);
+INSERT INTO Payment(loan_no, payment_no, amount, method, status, due_date) VALUES ('12345','1',150,'Online','Normal','2023-06-30');
+INSERT INTO Payment(loan_no, payment_no, amount, method, status, due_date) VALUES ('12345','2',250,'Online','Late','2023-06-20');
+INSERT INTO Borrows(ssn, loan_no) VALUES ('123456789','12345');
+DELETE FROM Payment WHERE payment_no='1';
+UPDATE Account SET balance=1530.50 WHERE acc_no='112233';

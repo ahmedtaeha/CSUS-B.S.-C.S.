@@ -1,0 +1,7 @@
+drop table Payment;
+drop table Borrows;
+drop table Loan;
+drop table Owns;
+drop table Account;
+drop table Customer;
+drop table Branch;

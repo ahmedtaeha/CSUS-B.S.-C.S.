@@ -1,0 +1,44 @@
+INSERT INTO Branch(name, address) VALUES ('Branch A','Street 123, XYZ');
+INSERT INTO Branch(name, address) VALUES ('Branch B','Street 321, ABC');
+
+INSERT INTO Customer(ssn, fname, lname, phone, address, fv_branch) VALUES ('123456789','Ahmed','Taeha','12345678','St. 1, City X, YZ','Branch A');
+INSERT INTO Customer(ssn, fname, lname, phone, address, fv_branch) VALUES ('987654321','John','Smith','11223344','St. 5, City A, TX','Branch B');
+INSERT INTO Customer(ssn, fname, lname, phone, address, fv_branch) VALUES ('123123123','Jabbar','Ahmad','43213342','St. 11, City Z, CA','Branch A');
+INSERT INTO Customer(ssn, fname, lname, phone, address, fv_branch) VALUES ('888666777','James','Bong','54234254','St. 3, City A, NY',null);
+
+INSERT INTO Account(acc_no, balance, atype, fee) VALUES ('112233',1000,'Savings',10.75);
+INSERT INTO Account(acc_no, balance, atype, fee) VALUES ('321321',11000,'Current',12.0);
+INSERT INTO Account(acc_no, balance, atype, fee) VALUES ('413123',1500,'Savings',10.75);
+INSERT INTO Account(acc_no, balance, atype, fee) VALUES ('321322',15000,'Current',12.0);
+INSERT INTO Account(acc_no, balance, atype, fee) VALUES ('123456',50000,'Savings',8.5);
+INSERT INTO Account(acc_no, balance, atype, fee) VALUES ('000000001',0,'Savings',10.5);
+
+INSERT INTO Owns(ssn, acc_no, own_date) VALUES ('123456789','112233','2023-06-22');
+INSERT INTO Owns(ssn, acc_no, own_date) VALUES ('123123123','321321','2023-06-26');
+INSERT INTO Owns(ssn, acc_no, own_date) VALUES ('987654321','413123','2023-06-25');
+INSERT INTO Owns(ssn, acc_no, own_date) VALUES ('123123123','321322','2023-06-26');
+INSERT INTO Owns(ssn, acc_no, own_date) VALUES ('123123123','123456','2023-06-26');
+INSERT INTO Owns(ssn, acc_no, own_date) VALUES ('888666777','000000001','2023-06-26');
+
+INSERT INTO Loan(loan_no, amount, ltype, interest_rate) VALUES ('12345',1000,'Student',0.095);
+INSERT INTO Loan(loan_no, amount, ltype, interest_rate) VALUES ('54321',850,'Student',0.095);
+INSERT INTO Loan(loan_no, amount, ltype, interest_rate) VALUES ('11222',2090,'Personal',0.15);
+INSERT INTO Loan(loan_no, amount, ltype, interest_rate) VALUES ('22333',3025,'Personal',0.15);
+INSERT INTO Loan(loan_no, amount, ltype, interest_rate) VALUES ('41231',550,'Student',0.095);
+INSERT INTO Loan(loan_no, amount, ltype, interest_rate) VALUES ('12121',150,'Student',0.095);
+
+INSERT INTO Borrows(ssn, loan_no) VALUES ('123456789','12345');
+INSERT INTO Borrows(ssn, loan_no) VALUES ('123456789','41231');
+INSERT INTO Borrows(ssn, loan_no) VALUES ('987654321','54321');
+INSERT INTO Borrows(ssn, loan_no) VALUES ('123123123','11222');
+INSERT INTO Borrows(ssn, loan_no) VALUES ('123123123','22333');
+INSERT INTO Borrows(ssn, loan_no) VALUES ('987654321','12121');
+
+INSERT INTO Payment(loan_no, payment_no, amount, method, status, due_date) VALUES ('12345','1',70,'Online','On time','2023-06-30');
+INSERT INTO Payment(loan_no, payment_no, amount, method, status, due_date) VALUES ('54321','2',10,'Cash','On time','2023-06-30');
+INSERT INTO Payment(loan_no, payment_no, amount, method, status, due_date) VALUES ('11222','3',50,'Online','Late','2023-06-20');
+INSERT INTO Payment(loan_no, payment_no, amount, method, status, due_date) VALUES ('12345','4',200,'Cash','Late','2023-06-20');
+INSERT INTO Payment(loan_no, payment_no, amount, method, status, due_date) VALUES ('12345','5',15,'Cheque','On time','2023-06-30');
+INSERT INTO Payment(loan_no, payment_no, amount, method, status, due_date) VALUES ('22333','6',100,'Online','On time','2023-06-30');
+INSERT INTO Payment(loan_no, payment_no, amount, method, status, due_date) VALUES ('22333','7',550,'Cash','Late','2023-06-20');
+INSERT INTO Payment(loan_no, payment_no, amount, method, status, due_date) VALUES ('12121','8',150,'Cheque','Late','2023-06-20');

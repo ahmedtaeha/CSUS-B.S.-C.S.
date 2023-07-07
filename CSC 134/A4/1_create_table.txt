@@ -1,0 +1,7 @@
+create table Branch (name VARCHAR(25) not null primary key, address VARCHAR(50));
+create table Customer (ssn CHAR(9) not null primary key, fname VARCHAR(25), lname VARCHAR (25) , phone CHAR(10), address VARCHAR (50), fv_branch VARCHAR(25), foreign key (fv_branch) references Branch(name));
+create table Account (acc_no CHAR(9) not null primary key, balance DECIMAL (15,2), atype VARCHAR(10), fee DECIMAL (7,2));
+create table Owns( ssn CHAR(9) not null, acc_no CHAR(9) not null, own_date DATE, primary key (ssn, acc_no), foreign key (ssn) references Customer(ssn), foreign key (acc_no) references Account(acc_no));
+create table Loan( loan_no CHAR(9) not null primary key, amount DECIMAL(15,2), ltype VARCHAR(10), interest_rate DECIMAL(7,4));
+create table Payment ( loan_no CHAR(9) not null, payment_no CHAR(4) not null, amount DECIMAL(10,2), method VARCHAR(10), status VARCHAR(10), due_date DATE, primary key(loan_no, payment_no), foreign key (loan_no) references Loan(loan_no));
+create table Borrows(ssn CHAR(9) not null, loan_no CHAR(9) not null, primary key(ssn, loan_no), foreign key(ssn) references Customer(ssn), foreign key (loan_no) references Loan(loan_no));
