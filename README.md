@@ -1,5 +1,5 @@
 # CSUS
-California State University, Sacramento - Computer Science
+California State University, Sacramento - B.S. ~ Computer Science
 
 
 CSC 35 - Fall 2022 - Devin Cook
