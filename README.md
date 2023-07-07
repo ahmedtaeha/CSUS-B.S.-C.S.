@@ -67,20 +67,28 @@ Physics 11A LAB - Spring 2023 - Robert Utter
   - You need to do 3 lab reports the entire semester, you take turns with your group mates doing a lab report. Make sure you get all the lab numbers/data from your lab group before anyone goes home because they can procrastinate sending you the data and force you to cram the lab report.
   
 
-CSC 133 - Summer 2023 - 
+CSC 133 - Summer 2023 - KWAN, Kin Chung
   - 
 
 
 CSC 134 - Summer 2023 - Ying Jin
-  - 
+  - Very sweet lady.
+  - Easy subject, easy professor, fair grading.
+  - Would take her again.
+  - Attendance not Mandatory.
+  - Exams are straight from the study guide.
   
   
 CSC 135 - Summer 2023 - Parham Phoulady
-  - 
+  - I liked him overall, great guy outside of school.
+  - Difficult grader, but he's fair and his students success is in his best interest in my opinion.
+  - Attendance not mandatory but I'd recommend it
+  - I didn't like the study guides for the exams.
 
 
-CSC 138 - Summer 2023 - 
-  - 
+CSC 138 - Summer 2023 - Michael Pierce
+  - Easiest course & professor I've taken at csus.
+  - You couldn't fail his course if you tried.
 
 
 Math 35 (Equivalent at FLC using Assist.org) - Summer 2023 -
