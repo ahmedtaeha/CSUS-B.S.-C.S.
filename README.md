@@ -77,13 +77,15 @@ CSC 133 - Summer 2023 - KWAN, Kin Chung
   - A few students were getting ready to report him to the CS department and school dean.
   - We also caught him leaving himself good reviews on ratemyprofessor and some of our bad reviews got taken down right after he asked which one of us left him bad reviews. He was reporting our bad reviews trying to take them down.
   - He clearly has personal issues and is taking it out on his students.
+
   - Pick anyone else, stay away.
 
 
 CSC 134 - Summer 2023 - Ying Jin
   - Very sweet lady.
   - Easy subject, easy professor, fair grading.
-  - Would take her again.
+  - Didn't do too well on the midterm and final because the multiple choice is tricky.
+  - Would take her again if there aren't easier professors.
   - Attendance not Mandatory.
   - Exams are straight from the study guide.
   
