@@ -77,6 +77,7 @@ CSC 133 - Summer 2023 - KWAN, Kin Chung
   - A few students were getting ready to report him to the CS department and school dean.
   - We also caught him leaving himself good reviews on ratemyprofessor and some of our bad reviews got taken down right after he asked which one of us left him bad reviews. He was reporting our bad reviews trying to take them down.
   - He clearly has personal issues and is taking it out on his students.
+  - He does curve.
 
   - Pick anyone else, stay away.
 
@@ -88,6 +89,7 @@ CSC 134 - Summer 2023 - Ying Jin
   - Would take her again if there aren't easier professors.
   - Attendance not Mandatory.
   - Exams are straight from the study guide.
+  - No curve.
   
   
 CSC 135 - Summer 2023 - Parham Phoulady
@@ -95,12 +97,14 @@ CSC 135 - Summer 2023 - Parham Phoulady
   - Difficult grader, but he's fair and his students success is in his best interest in my opinion.
   - Attendance not mandatory but I'd recommend it
   - I didn't like the study guides for the exams.
+  - No curve which is crazy to not have for his class.
 
 
 CSC 138 - Summer 2023 - Michael Pierce
   - Easiest course & professor I've taken at csus.
   - You couldn't fail his course if you tried.
+  - No curve.
 
 
 Math 35 (Equivalent at FLC using Assist.org) - Summer 2023 -
-  - 
+  - Easy.
