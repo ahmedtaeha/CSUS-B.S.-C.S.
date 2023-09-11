@@ -108,3 +108,7 @@ CSC 138 - Summer 2023 - Michael Pierce
 
 Math 35 (Equivalent at FLC using Assist.org) - Summer 2023 -
   - Easy.
+
+CSC 137 - Singh - Fall 2023
+
+CSC 177 - - Fall 2023
