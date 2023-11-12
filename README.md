@@ -100,6 +100,3 @@
 #### CSC 177 - Fall 2023
 - **[Course details pending]**
 
----
-
-This version retains more of the specific details you provided for each course, using Markdown formatting to enhance readability and organization.
