@@ -1,0 +1,7 @@
+color,shape,size,class
+red,square,big,+
+blue,square,big,+
+red,round,small,-
+green,square,small,-
+red,round,big,+
+green,round,big,-
