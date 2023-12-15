@@ -94,9 +94,13 @@
 - Highlights:
   - Simple and accessible curriculum.
 
-#### CSC 137 - Fall 2023 - Instructor: Singh
-- **[Course details pending]**
+#### CSC 137 - Fall 2023 - Instructor: Harvin Singh
+- Outstanding professor, rating 10/10
+- The course is straightforward; simply attend lectures and focus.
+- The examinations, including two midterms and a final, are quite manageable.
 
 #### CSC 177 - Fall 2023
-- **[Course details pending]**
+- Highly recommend the professor, a delightful and kind older gentleman, rated 10/10.
+- The class is conducted online and asynchronously.
+- It's a group project-based course, so it's important to form a strong team early on, as advised by the professor.
 
