@@ -1,0 +1,4 @@
+string0*Ahmed: 'Did you enjoy yourself last night?'
+string1*Ahmed: 'You're too good for this world.'
+string2*Ahmed: 'If you get me his phone, I might reconsider.'
+string3*Ahmed: 'I'm not going to let you go.'

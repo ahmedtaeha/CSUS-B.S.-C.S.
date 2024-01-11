@@ -1,0 +1,2 @@
+Art/f.png*f0
+Art/csc130image.png*f2

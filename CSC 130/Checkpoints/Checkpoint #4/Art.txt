@@ -1,0 +1,11 @@
+Art/f.png*f0
+Art/csc130image.png*f2
+Art/walk0.png*walk0
+Art/walk1.png*walk1
+Art/walk2.png*walk2
+Art/walk3.png*walk3
+Art/walk4.png*walk4
+Art/walk5.png*walk5
+Art/walk6.png*walk6
+Art/walk7.png*walk7
+Art/walk8.png*walk8
