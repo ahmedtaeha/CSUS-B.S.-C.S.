@@ -14,6 +14,7 @@
   - Some exams have confusing wording.
   - Overall, an easy subject if you engage with the material.
 
+
 #### CSC 130 - Fall 2022 - Instructor: Matthew W. Phillips
 - **Object-Oriented Programming (Java, Basic 2D Game Development)**
 - Highlights:
@@ -22,6 +23,7 @@
   - Assessments include two quizzes, a midterm, and a final exam (all remote).
   - Engaging and student-focused teaching approach.
   - Manageable final project.
+
 
 #### CSC 131 - Fall 2022 - Instructor: Ahmed Salem
 - **Software Engineering in a Team Environment**
@@ -32,6 +34,7 @@
   - Open-note midterm and final.
   - Course difficulty moderate, but success highly dependent on team dynamics.
 
+
 #### CSC 60 - Spring 2023 - Instructor: Ruthann Biel
 - **Remote Learning Experience**
 - Highlights:
@@ -39,6 +42,7 @@
   - Simple and straightforward course structure.
   - Initially mandatory attendance, later relaxed.
   - Independent work, no group requirement.
+
 
 #### Physics 11A LEC & DISC - Spring 2023 - Instructor: Vera Margoniner
 - **Challenging Physics Course**
@@ -48,6 +52,7 @@
   - Regular quizzes.
   - Non-mandatory but recommended attendance.
 
+
 #### Physics 11A LAB - Spring 2023 - Instructor: Robert Utter
 - **Lab Component of Physics 11A**
 - Highlights:
@@ -55,6 +60,7 @@
   - Importance of choosing a reliable lab group.
   - Lab quizzes based on pre-lab reading.
   - Collaborative lab reports with shared responsibilities.
+
 
 #### CSC 133 - Summer 2023 - Instructor: KWAN, Kin Chung
 - **Not Recommended**
@@ -65,6 +71,7 @@
   - Controversial student-instructor interactions.
   - Course includes a grading curve, but overall experience is negative.
 
+
 #### CSC 134 - Summer 2023 - Instructor: Ying Jin
 - **Fair and Balanced Course**
 - Highlights:
@@ -72,6 +79,7 @@
   - Fair grading system, though multiple-choice questions can be tricky.
   - Study guides provided for exams.
   - No grading curve, but manageable coursework.
+
 
 #### CSC 135 - Summer 2023 - Instructor: Parham Phoulady
 - **Demanding but Rewarding**
@@ -82,6 +90,7 @@
   - Study guides not always helpful.
   - No grading curve, challenging but achievable success.
 
+
 #### CSC 138 - Summer 2023 - Instructor: Michael Pierce
 - **Easiest Course at CSUS**
 - Highlights:
@@ -89,18 +98,32 @@
   - Very approachable teaching style.
   - Course structured in a way that makes failing difficult.
 
+
 #### Math 35 (Equivalent at FLC using Assist.org) - Summer 2023
 - **Straightforward Mathematics Course**
 - Highlights:
   - Simple and accessible curriculum.
+
 
 #### CSC 137 - Fall 2023 - Instructor: Harvin Singh
 - Outstanding professor, rating 10/10
 - The course is straightforward; simply attend lectures and focus.
 - The examinations, including two midterms and a final, are quite manageable.
 
-#### CSC 177 - Fall 2023
+
+#### CSC 177 - Fall 2023 - Instructor: Jagannadha Chidella
 - Highly recommend the professor, a delightful and kind older gentleman, rated 10/10.
 - The class is conducted online and asynchronously.
 - It's a group project-based course, so it's important to form a strong team early on, as advised by the professor.
 
+
+#### CSC 179 - Spring 2024 - Instructor: Ahmed Salem
+- Review coming at the end of the semester.
+
+
+#### CSC 174 - Spring 2024 - Instructor: Ying Jin
+- Review coming at the end of the semester.
+
+
+#### CSC 139 - Spring 2024 - Instructor: Daryl Posnett
+- Review coming at the end of the semester.
