@@ -1,0 +1,10 @@
+drop procedure paintings_sp;
+drop function No_of_painting_exhibited;
+drop view artist_no_of_sculpture;
+drop table shown_at;
+drop table exhibition;
+drop table `others`;
+drop table painting;
+drop table sculpture;
+drop table art_object;
+drop table artist;
