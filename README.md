@@ -11,7 +11,7 @@
   - Attendance not mandatory but recommended.
   - Two midterms and a final exam in person, lenient grading.
   - Final project with extra credit opportunities.
-  - Some exams have confusing wording.
+  - The exams have confusing wording.
   - Overall, an easy subject if you engage with the material.
 
 
