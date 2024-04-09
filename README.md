@@ -38,7 +38,7 @@
 #### CSC 60 - Spring 2023 - Instructor: Ruthann Biel
 - **Remote Learning Experience**
 - Highlights:
-  - Compassionate instructor, taught remotely due to illness.
+  - Compassionate instructor.
   - Simple and straightforward course structure.
   - Initially mandatory attendance, later relaxed.
   - Independent work, no group requirement.
