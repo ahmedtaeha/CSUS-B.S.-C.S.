@@ -1,382 +1,160 @@
-/* This example is stolen from Dr. Raju Rangaswami's original 4338
-   demo and modified to fit into our lecture. */
-
 #include <stdio.h>
-#include <sys/wait.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <fcntl.h>
 #include <unistd.h>
+#include <sys/types.h>
 #include <string.h>
+#include <ctype.h>
+#include <unistd.h>
+#include <sys/wait.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdbool.h>
 
-#define MAX_ARGS 20
-#define BUFSIZE 1024
-
+#define clear() printf("\033[H\033[J")
+#define MAX_ARGS 64
+#define MAX_PATH_LENGTH 1024
+#define MAX_COMMAND_LENGTH 1024
+#define MAX_HISTORY_SIZE 100
+char error_message[30] = "An error has occurred\n";
 char *path[10];
 
-int get_args(char *cmdline, char *args[])
+void initialize()
 {
-  int i = 0;
+  clear();
+}
 
-  /* if no args */
-  if ((args[0] = strtok(cmdline, "\n\t ")) == NULL)
-    return 0;
-
-  while ((args[++i] = strtok(NULL, "\n\t ")) != NULL)
+void printDir()
+{
+  char cwd[1024];
+  if (getcwd(cwd, sizeof(cwd)) != NULL)
   {
-    if (i >= MAX_ARGS)
+    printf("\nDir: %s: ", cwd);
+  }
+  else
+  {
+    perror("getcwd() error");
+  }
+}
+
+bool StringCompare(char *a, char b[])
+{
+  bool equal = false;
+  for (int i = 0; a[i] != '\0'; i++)
+  {
+    if (a[i] == b[i])
     {
-      char error_message[30] = "An error has occurred\n";
-      write(STDERR_FILENO, error_message, strlen(error_message));
-      // exit(1);
-    }
-  }
-  /* the last one is always NULL */
-  return i;
-}
-
-int get_args_pipe(char *cmdline, char *args[])
-{
-  int i = 0;
-
-  /* if no args */
-  if ((args[0] = strtok(cmdline, "|")) == NULL)
-  {
-    return 0;
-  }
-
-  while ((args[++i] = strtok(NULL, "|")) != NULL)
-  {
-    if (i >= MAX_ARGS)
-    {
-      char error_message[30] = "An error has occurred\n";
-      write(STDERR_FILENO, error_message, strlen(error_message));
-      // exit(1);
-    }
-  }
-  /* the last one is always NULL */
-  return i;
-}
-
-// returns index if has '>' symbol, -1 otherwise
-int has_output(char *args[], int nargs)
-{
-  int i = 0;
-  for (i = 0; i < nargs; i++)
-  {
-    if (strcmp(args[i], ">") == 0)
-      return i;
-  }
-  return -1;
-}
-
-// returns index if has '>>' symbol, -1 otherwise
-int has_output_append(char *args[], int nargs)
-{
-  int i = 0;
-  for (i = 0; i < nargs; i++)
-  {
-    if (strcmp(args[i], ">>") == 0)
-      return i;
-  }
-  return -1;
-}
-
-// returns index if has '<' symbol, -1 otherwise
-int has_input(char *args[], int nargs)
-{
-  int i = 0;
-  for (i = 0; i < nargs; i++)
-  {
-    if (strcmp(args[i], "<") == 0)
-      return i;
-  }
-  return -1;
-}
-
-// returns 1 if args have '<' and '>' or symbols, 0 otherwise
-int has_input_output(char *args[], int nargs)
-{
-  if (has_output(args, nargs) != -1 && has_input(args, nargs) != -1)
-  {
-    return 1;
-  }
-  else
-  {
-    return 0;
-  }
-}
-
-void execute_simple(char *args[], int nargs)
-{
-  int pid, async;
-  /* check if async call */
-  if (!strcmp(args[nargs - 1], "&"))
-  {
-    async = 1;
-    args[--nargs] = 0;
-  }
-  else
-    async = 0;
-
-  pid = fork();
-  if (pid == 0)
-  { /* child process */
-    execvp(args[0], args);
-    char error_message[30] = "An error has occurred\n";
-    write(STDERR_FILENO, error_message, strlen(error_message));
-    // exit(-1);
-  }
-  else if (pid > 0)
-  { /* parent process */
-    if (!async)
-      waitpid(pid, NULL, 0);
-  }
-  else
-  { /* error occurred */
-    char error_message[30] = "An error has occurred\n";
-    write(STDERR_FILENO, error_message, strlen(error_message));
-    // exit(1);
-  }
-}
-
-void process_output(char *args[], int nargs, char *filename)
-{
-  int pid, async;
-  /* check if async call */
-  if (!strcmp(args[nargs - 1], "&"))
-  {
-    async = 1;
-    args[--nargs] = 0;
-  }
-  else
-    async = 0;
-
-  // open file to write output
-  int fd1 = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-
-  pid = fork();
-  if (pid == 0)
-  { /* child process */
-    if (dup2(fd1, 1) != 1)
-    {
-      char error_message[30] = "An error has occurred\n";
-      write(STDERR_FILENO, error_message, strlen(error_message));
-      // exit(1);
-    }
-    close(fd1);
-
-    execvp(args[0], args);
-    /* return only when exec fails */
-    char error_message[30] = "An error has occurred\n";
-    write(STDERR_FILENO, error_message, strlen(error_message));
-    // exit(-1);
-  }
-  else if (pid > 0)
-  { /* parent process */
-    if (!async)
-      waitpid(pid, NULL, 0);
-  }
-  else
-  { /* error occurred */
-    char error_message[30] = "An error has occurred\n";
-    write(STDERR_FILENO, error_message, strlen(error_message));
-    // exit(1);
-  }
-}
-
-void process_output_append(char *args[], int nargs, char *filename)
-{
-  int pid, async;
-  /* check if async call */
-  if (!strcmp(args[nargs - 1], "&"))
-  {
-    async = 1;
-    args[--nargs] = 0;
-  }
-  else
-    async = 0;
-
-  // open file to write output
-  int fd1 = open(filename, O_WRONLY | O_CREAT | O_APPEND, 0644);
-
-  pid = fork();
-  if (pid == 0)
-  { /* child process */
-    if (dup2(fd1, 1) != 1)
-    {
-      char error_message[30] = "An error has occurred\n";
-      write(STDERR_FILENO, error_message, strlen(error_message));
-      // exit(1);
-    }
-    close(fd1);
-
-    execvp(args[0], args);
-    /* return only when exec fails */
-    char error_message[30] = "An error has occurred\n";
-    write(STDERR_FILENO, error_message, strlen(error_message));
-    // exit(-1);
-  }
-  else if (pid > 0)
-  { /* parent process */
-    if (!async)
-      waitpid(pid, NULL, 0);
-  }
-  else
-  { /* error occurred */
-    char error_message[30] = "An error has occurred\n";
-    write(STDERR_FILENO, error_message, strlen(error_message));
-    // exit(1);
-  }
-}
-
-void process_input(char *args[], int nargs, char *filename)
-{
-  int pid, async;
-  /* check if async call */
-  if (!strcmp(args[nargs - 1], "&"))
-  {
-    async = 1;
-    args[--nargs] = 0;
-  }
-  else
-    async = 0;
-
-  // open file to read output
-  int fd1 = open(filename, O_RDONLY, 0644);
-
-  pid = fork();
-  if (pid == 0)
-  { /* child process */
-    if (dup2(fd1, 0) != 0)
-    {
-      char error_message[30] = "An error has occurred\n";
-      write(STDERR_FILENO, error_message, strlen(error_message));
-      // exit(1);
-    }
-    close(fd1);
-
-    execvp(args[0], args);
-    /* return only when exec fails */
-    char error_message[30] = "An error has occurred\n";
-    write(STDERR_FILENO, error_message, strlen(error_message));
-    // exit(-1);
-  }
-  else if (pid > 0)
-  { /* parent process */
-    if (!async)
-      waitpid(pid, NULL, 0);
-  }
-  else
-  { /* error occurred */
-    char error_message[30] = "An error has occurred\n";
-    write(STDERR_FILENO, error_message, strlen(error_message));
-    // exit(1);
-  }
-}
-
-void process_input_output(char *args[], int nargs, char *inFilename, char *outFilename)
-{
-  int pid, async;
-  /* check if async call */
-  if (!strcmp(args[nargs - 1], "&"))
-  {
-    async = 1;
-    args[--nargs] = 0;
-  }
-  else
-    async = 0;
-
-  // open file to read output
-  int fd1 = open(inFilename, O_RDONLY, 0644);
-  // open file to write output
-  int fd2 = open(outFilename, O_WRONLY | O_CREAT | O_APPEND, 0644);
-
-  pid = fork();
-  if (pid == 0)
-  { /* child process */
-    // replace stdin with input file
-    if (dup2(fd1, 0) != 0)
-    {
-      char error_message[30] = "An error has occurred\n";
-      write(STDERR_FILENO, error_message, strlen(error_message));
-      // exit(1);
-    }
-    close(fd1);
-
-    // replace stdout with output file
-    if (dup2(fd2, 1) != 1)
-    {
-      char error_message[30] = "An error has occurred\n";
-      write(STDERR_FILENO, error_message, strlen(error_message));
-      // exit(1);
-    }
-    close(fd2);
-
-    execvp(args[0], args);
-    /* return only when exec fails */
-    char error_message[30] = "An error has occurred\n";
-    write(STDERR_FILENO, error_message, strlen(error_message));
-    // exit(-1);
-  }
-  else if (pid > 0)
-  { /* parent process */
-    if (!async)
-      waitpid(pid, NULL, 0);
-  }
-  else
-  { /* error occurred */
-    char error_message[30] = "An error has occurred\n";
-    write(STDERR_FILENO, error_message, strlen(error_message));
-    // exit(1);
-  }
-}
-
-void process_pipe(char *cmdline, char **args[], int nargs[], int npipes)
-{
-  if (npipes == 1)
-  {
-    int pipes[2];
-    int pid;
-
-    pipe(pipes);
-
-    pid = fork();
-    if (pid == 0)
-    {
-      dup2(pipes[0], 0);
-      close(pipes[1]);
-
-      execvp(args[0][0], args[0]);
+      if (a[i + 1] == '\0' || b[i + 1] == '\0')
+      {
+        return true;
+      }
     }
     else
     {
-      dup2(pipes[1], 1);
-      close(pipes[0]);
-      execvp(args[1][0], args[1]);
+      equal = false;
+      break;
     }
   }
-  // else
-  // {
-  //   system(cmdline);
-  // }
+  return false;
 }
 
-void change_dir(char *args[], int nargs)
+// Function to execute command from history
+char *extract_from_history(char *history[], int history_count, int index)
 {
-  if (nargs == 2)
+  if (index < 1 || index > history_count)
   {
-    if (chdir(args[1]) == -1)
+    write(STDERR_FILENO, error_message, strlen(error_message));
+    return NULL;
+  }
+  // printf("Executing from history: %s\n", history[index - 1]);
+  return strdup(history[index - 1]);
+}
+
+int InputType(char Buffer[], char *history[], int history_count)
+{
+  // Checking for exit Condition.
+  char e[] = {'e', 'x', 'i', 't'};
+  if (StringCompare(Buffer, e))
+  {
+    return 0;
+  }
+
+  // Checking for Pipes + Output redirection
+  for (int i = 0; Buffer[i] != '\0'; i++)
+  {
+    if (Buffer[i] == '|')
     {
-      char error_message[30] = "An error has occurred\n";
+      for (int j = i; Buffer[j] != '\0'; j++)
+      {
+        if (Buffer[j] == '>')
+        {
+          return 5;
+        }
+      }
+      break;
+    }
+  }
+
+  // Checking Both input and output redirection.
+  for (int i = 0; Buffer[i] != '\0'; i++)
+  {
+    if (Buffer[i] == '<')
+    {
+      for (int j = i; Buffer[j] != '\0'; j++)
+      {
+        if (Buffer[j] == '>')
+        {
+          return 6;
+        }
+      }
+      break;
+    }
+  }
+
+  // Checking Pipes
+  for (int i = 0; Buffer[i] != '\0'; i++)
+  {
+    if (Buffer[i] == '>')
+    {
+      return 1;
+    }
+  }
+
+  for (int i = 0; Buffer[i] != '\0'; i++)
+  {
+    if (Buffer[i] == '<')
+    {
+      return 3;
+    }
+  }
+
+  for (int i = 0; Buffer[i] != '\0'; i++)
+  {
+    if (Buffer[i] == '|')
+    {
+      return 4;
+    }
+  }
+
+  // Else it is a simple command
+  return 2;
+}
+
+void change_directory(char **Arguments)
+{
+  if (Arguments[0] != NULL && Arguments[1] != NULL && Arguments[2] == NULL)
+  {
+
+    if (chdir(Arguments[1]) == -1)
+    {
       write(STDERR_FILENO, error_message, strlen(error_message));
+      exit(0);
     }
   }
   else
   {
-    char error_message[30] = "An error has occurred\n";
     write(STDERR_FILENO, error_message, strlen(error_message));
+    exit(0);
   }
 }
 
@@ -394,202 +172,706 @@ void update_path(char *tokens[])
     {
       path[i] = (char *)malloc(strlen(tokens[i]) + 1);
       strcpy(path[i], tokens[i]);
+      exit(0);
     }
     i++;
   }
 }
 
-void execute(char *cmdline)
+void ExecutingCommand(char *command, char **Arguments)
 {
-  int pid, async;
-  char *args[MAX_ARGS];
-  char *copy = cmdline;
-
-  int nargs = 0, flag = 0; // flag to check if args have pipe symbol
-
-  if (strstr(cmdline, "|"))
+  pid_t id = fork();
+  if (id == 0)
   {
-    // system(cmdline);
-    nargs = get_args_pipe(cmdline, args);
-    flag = 1;
-  }
-
-  if (!flag)
-  {
-    nargs = get_args(cmdline, args);
-  }
-
-  if (nargs <= 0)
-    return;
-
-  if ((!strcmp(args[0], "quit") || !strcmp(args[0], "exit")) && nargs == 1)
-  {
-    exit(0);
-  }
-  if ((strcmp(args[0], "quit") == 0 || strcmp(args[0], "exit") == 0) && nargs > 1)
-  {
-    char error_message[30] = "An error has occurred\n";
-    write(STDERR_FILENO, error_message, strlen(error_message));
-    return;
-  }
-
-  int flag_output = has_output(args, nargs);
-  int flag_input = has_input(args, nargs);
-  int flag_output_append = has_output_append(args, nargs);
-  int flag_input_output = has_input_output(args, nargs);
-
-  if(path[0] == NULL)
-    return;
-
-  if (strcmp(args[0], "cd") == 0)
-  {
-    change_dir(args, nargs);
-  }
-  else if (strcmp(args[0], "path") == 0)
-  {
-    update_path(args + 1);
-  }
-  else if (flag)
-  {
-    int i, j;
-    // split args of pipe to further args (if possible)
-    char **args2[MAX_ARGS];
-    int nargs2[MAX_ARGS];
-
-    for (i = 0; i < nargs; i++)
+    if (strcmp(Arguments[0], "cd") == 0)
     {
-      args2[i] = malloc(sizeof(char *) * BUFSIZE);
-      nargs2[i] = get_args(args[i], args2[i]);
+      change_directory(Arguments);
     }
-
-    process_pipe(copy, args2, nargs2, nargs);
-  }
-  // check if args have '<' and '>' symbole
-  else if (flag_input_output == 1)
-  {
-    // get index of input symbol
-    int input_index = has_input(args, nargs);
-
-    char inFilename[100];
-    char outFilename[100];
-    // get input file name
-    strcpy(inFilename, args[input_index + 1]);
-
-    // get index of output symbol
-    int output_index = has_output(args, nargs);
-
-    // get output file name
-    strcpy(outFilename, args[output_index + 1]);
-
-    // put empty string "" on input_index and next to input_index
-    strcpy(args[input_index], "");
-    strcpy(args[input_index + 1], "");
-    // put empty string "" on output_index and next to output_index
-    strcpy(args[output_index], "");
-    strcpy(args[output_index + 1], "");
-
-    char *args2[MAX_ARGS];
-    // copy remianing arguments into new args array
-    int i, index = 0;
-    for (i = 0; i < nargs; i++)
+    else if (strcmp(Arguments[0], "path") == 0)
     {
-      if (strcmp(args[i], "") != 0)
+      update_path(Arguments + 1);
+    }
+    else
+    {
+      int status_code = execvp(command, Arguments);
+      if (status_code == -1)
       {
-        args2[index] = malloc(sizeof(char *) * BUFSIZE);
-        strcpy(args2[index++], args[i]);
+        write(STDERR_FILENO, error_message, strlen(error_message));
+        exit(0);
       }
     }
-    args2[index] = malloc(sizeof(char *) * BUFSIZE);
-    args2[index] = NULL;
-    process_input_output(args2, index, inFilename, outFilename);
-  }
-  // check if args has output to file symbol >
-  else if (flag_output != -1)
-  {
-    // get file name after > symbol
-    char *filename = args[flag_output + 1];
-    // put null char at location of >
-    args[flag_output] = NULL;
-
-    process_output(args, nargs, filename);
-  }
-  else if (flag_output_append != -1)
-  {
-    // get file name after >> symbol
-    char *filename = args[flag_output_append + 1];
-    // put null char at location of >>
-    args[flag_output_append] = NULL;
-
-    process_output_append(args, nargs, filename);
-  }
-  else if (flag_input != -1)
-  {
-    // get file name after < symbol
-    char *filename = args[flag_input + 1];
-    // put null char at location of <
-    args[flag_input] = NULL;
-
-    process_input(args, nargs, filename);
   }
   else
   {
-    execute_simple(args, nargs);
+    wait(NULL);
+  }
+}
+
+void Separation(char Buffer[], char *command, char ***Arguments)
+{
+  int j = 0;
+  for (int i = 0; Buffer[i] != ' ' && Buffer[i] != '\0'; i++)
+  {
+    command[j] = Buffer[i];
+    j++;
+  }
+  command[j] = '\0';
+
+  j = 0;
+  int index = 0;
+  for (int i = 0; Buffer[i] != '\0'; i++)
+  {
+    if (Buffer[i] == ' ')
+    {
+      index++;
+    }
+  }
+  index = index + 2;
+
+  *Arguments = (char **)malloc(sizeof(char *) * index);
+  if (*Arguments == NULL)
+  {
+    write(STDERR_FILENO, error_message, strlen(error_message));
+    exit(1);
+  }
+
+  char *dynamicArray;
+  dynamicArray = strtok(Buffer, " ");
+  int update = 0;
+  while (dynamicArray != NULL)
+  {
+    char *tempO = (char *)malloc(strlen(dynamicArray) + 1);
+    if (tempO == NULL)
+    {
+      write(STDERR_FILENO, error_message, strlen(error_message));
+      exit(1);
+    }
+    strcpy(tempO, dynamicArray);
+    (*Arguments)[update] = tempO;
+    update++;
+    dynamicArray = strtok(NULL, " ");
+  }
+  (*Arguments)[update] = NULL;
+}
+
+// To handel command with output redirections.
+void Separation2(char Buffer[], char *command, char ***Arguments)
+{
+  char Buffer2[100];
+  char Filename[100];
+  int Append = 0; // Using an integer to represent boolean value
+  int j = 0;
+  for (int i = 0; Buffer[i] != '>'; i++)
+  {
+    Buffer2[i] = Buffer[i];
+    j++;
+  }
+  Buffer2[j] = '\0';
+
+  if (Buffer[j] == '>')
+  {
+    if (Buffer[j + 1] == '>')
+    {
+      Append = 1;
+      j++;
+    }
+  }
+
+  int index = 0;
+  j = j + 2;
+  for (int i = j; Buffer[i] != '\0'; i++)
+  {
+    Filename[index] = Buffer[i];
+    index++;
+  }
+  Filename[index] = '\0';
+
+  Separation(Buffer2, command, Arguments);
+
+  // Now changing File Descriptor of stdout and calling open system call
+  int fd;
+  if (Append)
+  {
+    fd = open(Filename, O_CREAT | O_WRONLY | O_APPEND, 0666);
+  }
+  else
+  {
+    fd = open(Filename, O_CREAT | O_WRONLY, 0666);
+  }
+
+  int backup_fd = dup(1);
+  dup2(fd, 1);
+  close(fd);
+  ExecutingCommand(command, *Arguments);
+  close(1);
+  dup2(backup_fd, 1);
+  close(backup_fd);
+}
+
+void Separation3(char Buffer[], char *command, char ***Arguments)
+{
+  char Buffer2[100];
+  char Filename[100];
+  int j = 0;
+  for (int i = 0; Buffer[i] != '<'; i++)
+  {
+    Buffer2[i] = Buffer[i];
+    j++;
+  }
+
+  Buffer2[j] = '\0';
+
+  int index = 0;
+  j = j + 2;
+  for (int i = j; Buffer[i] != '\0'; i++)
+  {
+    Filename[index] = Buffer[i];
+    index++;
+  }
+  Filename[index] = '\0';
+  Separation(Buffer2, command, Arguments);
+
+  int fd = open(Filename, O_RDONLY);
+  if (fd == -1)
+  {
+    perror("open");
+    exit(EXIT_FAILURE);
+  }
+  int backup_fd = dup(0);
+  dup2(fd, 0);
+  close(fd);
+  ExecutingCommand(command, *Arguments);
+  close(0);
+  dup2(backup_fd, 0);
+  close(backup_fd);
+}
+
+int pipeCounter(char Buffer[])
+{
+  int counter = 0;
+  for (int i = 0; Buffer[i] != '\0'; i++)
+  {
+    if (Buffer[i] == '|')
+      counter++;
+  }
+  return counter;
+}
+
+void Pipe_Run(char *command, char **Arguments, int in, int out)
+{
+  pid_t pId = fork();
+
+  if (pId < 0)
+  { // If child process is not created.
+    write(STDERR_FILENO, error_message, strlen(error_message));
+    exit(EXIT_FAILURE);
+  }
+  else if (pId == 0)
+  {
+    if (in != 0)
+    {
+      dup2(in, 0);
+      close(in);
+    }
+
+    if (out != 1)
+    {
+      dup2(out, 1);
+      close(out);
+    }
+
+    int status_code = execvp(command, Arguments);
+
+    if (status_code == -1)
+    {
+      write(STDERR_FILENO, error_message, strlen(error_message));
+      exit(EXIT_FAILURE);
+    }
+  }
+  else if (pId > 0)
+  {
+    wait(NULL);
+  }
+}
+
+// This is used to handle only Piper type input
+void Separation4(char Buffer[], char *command, char ***Arguments)
+{
+  char Buffer2[100];
+
+  int Total_Pipes = pipeCounter(Buffer);
+  // Now Total_Pipe contains the pipe present in the input
+
+  int index = 0;
+  int in;
+
+  // The first process should get its input from the original file descriptor 0.
+  in = 0;
+  int z = 0;
+  // Below loop will run for first n-1 command.
+  int read = 0, fd[2];
+  for (int i = 0; i < Total_Pipes; i++)
+  {
+
+    for (z = 0; Buffer[index] != '|' && Buffer[index] != '\0'; index++, z++)
+    {
+      Buffer2[z] = Buffer[index];
+    }
+    Buffer2[z] = '\0';
+    index = index + 2;
+
+    if (pipe(fd) == -1)
+    {
+      write(STDERR_FILENO, error_message, strlen(error_message));
+      exit(EXIT_FAILURE);
+    }
+    Separation(Buffer2, command, Arguments);
+    Pipe_Run(command, *Arguments, read, fd[1]);
+    close(fd[1]);
+    read = fd[0];
+  }
+  // This is the last command being run now.
+  for (z = 0; Buffer[index] != '|' && Buffer[index] != '\0'; index++, z++)
+  {
+    Buffer2[z] = Buffer[index];
+  }
+  Buffer2[z] = '\0';
+  index = index + 2;
+  Separation(Buffer2, command, Arguments);
+  Pipe_Run(command, *Arguments, read, 1);
+}
+
+// This is used to handel input which contain pipe along with output.
+void PipeAndOutput(char Buffer[], char *command, char ***Arguments)
+{
+  char Buffer2[100], Filename[100];
+  int index = 0, fd;
+  int Append = 0; // Using an integer to represent boolean value
+  for (int i = 0; Buffer[i] != '>'; i++)
+  {
+    Buffer2[i] = Buffer[i];
+    index++;
+  }
+  if (Buffer[index + 1] == '>')
+  {
+    Append = 1;
+  }
+  index--;
+  Buffer2[index] = '\0';
+  index = index + 3;
+  int j = 0;
+  for (int i = index; Buffer[i] != '\0'; i++)
+  {
+    Filename[j] = Buffer[i];
+    j++;
+  }
+  Filename[j] = '\0';
+  if (Append)
+  {
+    fd = open(Filename, O_CREAT | O_WRONLY | O_APPEND, 0666);
+  }
+  else
+  {
+    fd = open(Filename, O_CREAT | O_WRONLY, 0666);
+  }
+  if (fd == -1)
+  {
+    write(STDERR_FILENO, error_message, strlen(error_message));
+    exit(EXIT_FAILURE);
+  }
+  int backup_fd = dup(1);
+  dup2(fd, 1);
+  close(fd);
+  Separation4(Buffer2, command, Arguments);
+  close(1);
+  dup2(backup_fd, 1);
+  close(backup_fd);
+}
+
+void InputAndOutput(char Buffer[], char *command, char ***Arguments)
+{
+  char Buffer2[100], Filename[100];
+  int index = 0, fd;
+  int Append = 0; // Using an integer to represent boolean value
+  for (int i = 0; Buffer[i] != '>'; i++)
+  {
+    Buffer2[i] = Buffer[i];
+    index++;
+  }
+  if (Buffer[index + 1] == '>')
+  {
+    Append = 1;
+  }
+  index--;
+  Buffer2[index] = '\0';
+
+  if (Append)
+    index++;
+  index = index + 3;
+  int j = 0;
+  for (int i = index; Buffer[i] != '\0'; i++)
+  {
+    Filename[j] = Buffer[i];
+    j++;
+  }
+  Filename[j] = '\0';
+
+  if (Append)
+  {
+    fd = open(Filename, O_CREAT | O_WRONLY | O_APPEND, 0666);
+  }
+  else
+  {
+    fd = open(Filename, O_CREAT | O_WRONLY, 0666);
+  }
+  if (fd == -1)
+  {
+    write(STDERR_FILENO, error_message, strlen(error_message));
+    exit(EXIT_FAILURE);
+  }
+  int backup_fd = dup(1);
+  dup2(fd, 1);
+  close(fd);
+  Separation3(Buffer2, command, Arguments);
+  close(1);
+  dup2(backup_fd, 1);
+  close(backup_fd);
+}
+
+// Function to add command to history
+void add_to_history(char *history[], int *history_count, char *command)
+{
+  if (*history_count < MAX_HISTORY_SIZE)
+  {
+    history[(*history_count)++] = strdup(command);
+  }
+  else
+  {
+    // Shift history array to make space for new command
+    free(history[0]);
+    for (int i = 0; i < MAX_HISTORY_SIZE - 1; i++)
+    {
+      history[i] = history[i + 1];
+    }
+    history[MAX_HISTORY_SIZE - 1] = strdup(command);
+  }
+}
+
+char *trim(char *str)
+{
+  while (isspace((unsigned char)*str))
+  {
+    str++;
+  }
+  if (*str == '\0')
+  {
+    return str;
+  }
+  char *end = str + strlen(str) - 1;
+  while (end > str && isspace((unsigned char)*end))
+  {
+    end--;
+  }
+  *(end + 1) = '\0';
+  return str;
+}
+
+void process_input(char *Buffer, char *history[], int *history_count)
+{
+  char command[100], **Arguments;
+  // Add command to the history
+  if (Buffer[0] != '!')
+  {
+    add_to_history(history, history_count, Buffer);
+  }
+  else
+  {
+    // Extraction From History
+    int index = atoi(&Buffer[1]);
+    char *extracted_command = history[index - 1];
+    if (extracted_command != NULL)
+    {
+      strcpy(Buffer, extracted_command);
+    }
+  }
+
+  char buffer_copy[100];
+  strcpy(buffer_copy, Buffer);
+  const char s[2] = "&";
+  // Check for parallel commands
+
+  // Loop to extract each command
+  char *token_start = buffer_copy;
+  for (int i = 0; buffer_copy[i] != '\0'; i++)
+  {
+    if (buffer_copy[i] == '&')
+    {
+      buffer_copy[i] = '\0'; // Null-terminate the command
+      char *trimmed_command = trim(token_start);
+
+      // Process the command
+      if (strlen(trimmed_command) > 0)
+      {
+        int typeFlag = InputType(trimmed_command, history, *history_count);
+
+        // If Input value is exit
+        if (typeFlag == 0)
+        {
+          exit(0);
+        }
+        // Input contains Output Redirection
+        if (typeFlag == 1)
+        {
+          // printf("Input contains Output Redirection\n");
+          Separation2(trimmed_command, command, &Arguments);
+        }
+        // Input contains Input Redirection
+        if (typeFlag == 3)
+        {
+          // printf("Input contains Input Redirection\n");
+          Separation3(trimmed_command, command, &Arguments);
+        }
+        // Input contains Pipes
+        if (typeFlag == 4)
+        {
+          // printf("Input contains Pipes\n");
+          Separation4(trimmed_command, command, &Arguments);
+        }
+        // Simple command
+        if (typeFlag == 2)
+        {
+          Separation(trimmed_command, command, &Arguments);
+          ExecutingCommand(command, Arguments);
+        }
+        // Input contains Pipes + Output Redirection
+        if (typeFlag == 5)
+        {
+          PipeAndOutput(trimmed_command, command, &Arguments);
+        }
+        // Input contains Input + Output Redirection
+        if (typeFlag == 6)
+        {
+          InputAndOutput(trimmed_command, command, &Arguments);
+        }
+      }
+
+      // Update token_start for the next command
+      token_start = buffer_copy + i + 1;
+    }
+  }
+
+  // Process the last command if it doesn't end with '&'
+  char *trimmed_command = trim(token_start);
+  if (strlen(trimmed_command) > 0)
+  {
+    int typeFlag = InputType(trimmed_command, history, *history_count);
+
+    // If Input value is exit
+    if (typeFlag == 0)
+    {
+      exit(0);
+    }
+    // Input contains Output Redirection
+    if (typeFlag == 1)
+    {
+      // printf("Input contains Output Redirection\n");
+      Separation2(trimmed_command, command, &Arguments);
+    }
+    // Input contains Input Redirection
+    if (typeFlag == 3)
+    {
+      // printf("Input contains Input Redirection\n");
+      Separation3(trimmed_command, command, &Arguments);
+    }
+    // Input contains Pipes
+    if (typeFlag == 4)
+    {
+      // printf("Input contains Pipes\n");
+      Separation4(trimmed_command, command, &Arguments);
+    }
+    // Simple command
+    if (typeFlag == 2)
+    {
+      Separation(trimmed_command, command, &Arguments);
+      ExecutingCommand(command, Arguments);
+    }
+    // Input contains Pipes + Output Redirection
+    if (typeFlag == 5)
+    {
+      PipeAndOutput(trimmed_command, command, &Arguments);
+    }
+    // Input contains Input + Output Redirection
+    if (typeFlag == 6)
+    {
+      InputAndOutput(trimmed_command, command, &Arguments);
+    }
   }
 }
 
 int main(int argc, char *argv[])
 {
-  char *cmdline = NULL;
-  size_t input_size = 0;
-  // char cmdline[BUFSIZE];
-  int flag = 0;
-  FILE *fp;
+  /* Shell initialization */
+  // initialize();
+  char *history[MAX_HISTORY_SIZE];
+  int history_count = 0;
+  // Batch Mode
   if (argc == 2)
   {
-    fp = fopen(argv[1], "r");
-    if (fp == NULL)
+    FILE *file = fopen(argv[1], "r");
+    if (file == NULL)
     {
-      char error_message[30] = "An error has occurred\n";
-      write(STDERR_FILENO, error_message, strlen(error_message));
-      exit(1);
+      perror("Error opening file");
+      return 1;
     }
-    flag = 1;
-  }
-  else if (argc > 2)
-  {
-    char error_message[30] = "An error has occurred\n";
-    write(STDERR_FILENO, error_message, strlen(error_message));
-    exit(1);
+    char Buffer[100];
+    while (fgets(Buffer, sizeof(Buffer), file))
+    {
+      // Process each line from the file
+      process_input(Buffer, history, &history_count);
+    }
+    fclose(file);
+    return 0;
   }
 
-  char cwd[BUFSIZ];
-  path[0] = (char*)malloc(sizeof(char) * BUFSIZ);
-  getcwd(cwd, sizeof(cwd));
-
+  // Interactive Mode
+  //  Taking Input
   while (1)
   {
-    int res;
-    if (flag)
+    char Buffer[100], command[100], **Arguments;
+    // printDir();
+    printf("wish> ");
+    fgets(Buffer, 100, stdin);
+    if (Buffer[strlen(Buffer) - 1] == '\n') // Remove newline character
+      Buffer[strlen(Buffer) - 1] = '\0';
+    // Add command to the history
+    if (Buffer[0] != '!')
     {
-      res = getline(&cmdline, &input_size, fp);
+      add_to_history(history, &history_count, Buffer);
     }
     else
     {
-      printf("wish> ");
-      res = getline(&cmdline, &input_size, stdin);
+      // Extraction From History
+      int index = atoi(&Buffer[1]);
+      char *extracted_command = extract_from_history(history, history_count, index);
+      if (extracted_command != NULL)
+      {
+        strcpy(Buffer, extracted_command);
+        free(extracted_command);
+      }
     }
+    // Use a copy of Buffer for tokenization
+    char buffer_copy[100];
+    strcpy(buffer_copy, Buffer);
+    const char s[2] = "&";
+    // Check for parallel commands
 
-    if (res == -1)
+    // Loop to extract each command
+    char *token_start = buffer_copy;
+    for (int i = 0; buffer_copy[i] != '\0'; i++)
     {
-      exit(0);
+      if (buffer_copy[i] == '&')
+      {
+        buffer_copy[i] = '\0'; // Null-terminate the command
+        char *trimmed_command = trim(token_start);
+
+        // Process the command
+        if (strlen(trimmed_command) > 0)
+        {
+          int typeFlag = InputType(trimmed_command, history, history_count);
+
+          // If Input value is exit
+          if (typeFlag == 0)
+          {
+            exit(0);
+          }
+          // Input contains Output Redirection
+          if (typeFlag == 1)
+          {
+            // printf("Input contains Output Redirection\n");
+            Separation2(trimmed_command, command, &Arguments);
+          }
+          // Input contains Input Redirection
+          if (typeFlag == 3)
+          {
+            // printf("Input contains Input Redirection\n");
+            Separation3(trimmed_command, command, &Arguments);
+          }
+          // Input contains Pipes
+          if (typeFlag == 4)
+          {
+            // printf("Input contains Pipes\n");
+            Separation4(trimmed_command, command, &Arguments);
+          }
+          // Simple command
+          if (typeFlag == 2)
+          {
+            Separation(trimmed_command, command, &Arguments);
+            ExecutingCommand(command, Arguments);
+          }
+          // Input contains Pipes + Output Redirection
+          if (typeFlag == 5)
+          {
+            PipeAndOutput(trimmed_command, command, &Arguments);
+          }
+          // Input contains Input + Output Redirection
+          if (typeFlag == 6)
+          {
+            InputAndOutput(trimmed_command, command, &Arguments);
+          }
+        }
+
+        // Update token_start for the next command
+        token_start = buffer_copy + i + 1;
+      }
     }
 
-    if (res == 1)
+    // Process the last command if it doesn't end with '&'
+    char *trimmed_command = trim(token_start);
+    if (strlen(trimmed_command) > 0)
     {
-      continue;
-    }
+      int typeFlag = InputType(trimmed_command, history, history_count);
 
-    execute(cmdline);
+      // If Input value is exit
+      if (typeFlag == 0)
+      {
+        exit(0);
+      }
+      // Input contains Output Redirection
+      if (typeFlag == 1)
+      {
+        // printf("Input contains Output Redirection\n");
+        Separation2(trimmed_command, command, &Arguments);
+      }
+      // Input contains Input Redirection
+      if (typeFlag == 3)
+      {
+        // printf("Input contains Input Redirection\n");
+        Separation3(trimmed_command, command, &Arguments);
+      }
+      // Input contains Pipes
+      if (typeFlag == 4)
+      {
+        // printf("Input contains Pipes\n");
+        Separation4(trimmed_command, command, &Arguments);
+      }
+      // Simple command
+      if (typeFlag == 2)
+      {
+        Separation(trimmed_command, command, &Arguments);
+        ExecutingCommand(command, Arguments);
+      }
+      // Input contains Pipes + Output Redirection
+      if (typeFlag == 5)
+      {
+        PipeAndOutput(trimmed_command, command, &Arguments);
+      }
+      // Input contains Input + Output Redirection
+      if (typeFlag == 6)
+      {
+        InputAndOutput(trimmed_command, command, &Arguments);
+      }
+    }
   }
+
   return 0;
 }
