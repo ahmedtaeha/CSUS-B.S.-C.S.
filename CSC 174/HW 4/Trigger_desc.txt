@@ -1,0 +1,9 @@
+DELIMITER //
+CREATE TRIGGER after_delete_painting
+AFTER DELETE ON painting 
+FOR EACH ROW
+BEGIN
+delete from shown_at where art = old.id_no;
+delete from art_object where id_no = old.id_no;
+END //
+DELIMITER ;
