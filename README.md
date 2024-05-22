@@ -122,8 +122,10 @@
 
 
 #### CSC 174 - Spring 2024 - Instructor: Ying Jin
-- Review coming at the end of the semester.
+- The professor is very kind and genuinely cares about her students' success.
+- Her teaching style can be difficult to follow.
+- This course is challenging and requires more time and effort than initially expected.
 
 
 #### CSC 139 - Spring 2024 - Instructor: Daryl Posnett
-- Review coming at the end of the semester.
+- Terrible professor, stay away from him. I dropped his course.
