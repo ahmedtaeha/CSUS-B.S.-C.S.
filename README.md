@@ -118,8 +118,9 @@
 
 
 #### CSC 179 - Spring 2024 - Instructor: Ahmed Salem
-- Review coming at the end of the semester.
-
+- Once again, no students received an A, regardless of their efforts.
+- Fails to teach effectively and is very lazy, delaying grading until after the semester ends.
+- Achieving a B is easy, but an A is impossible.
 
 #### CSC 174 - Spring 2024 - Instructor: Ying Jin
 - The professor is very kind and genuinely cares about her students' success.
