@@ -129,4 +129,4 @@
 
 
 #### CSC 139 - Spring 2024 - Instructor: Daryl Posnett
-- Terrible professor, stay away from him. I dropped his course.
+- Didn't get along with him. I dropped his course.
