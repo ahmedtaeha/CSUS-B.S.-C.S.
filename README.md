@@ -1,3 +1,9 @@
+## Disclaimer
+
+This repository is intended solely for demonstrating my work and skills to potential employers and collaborators. **I do not condone any form of cheating, plagiarism, or academic dishonesty.** All code and content are provided for informational purposes only.
+
+Please **do not copy, reproduce, or distribute** any part of this repository without my explicit permission. Respect academic integrity and use this material responsibly.
+
 # California State University, Sacramento
 ## Bachelor of Science in Computer Science
 
